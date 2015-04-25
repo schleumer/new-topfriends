@@ -1,1 +1,10 @@
-b abaca
+extends ./layouts/base
+
+block content
+  div(ng-if="facebookLoaded")
+    div(ng-view)
+  div.text-center(ng-if="!facebookLoaded")
+    div
+      i.fa.fa-spin.fa-spinner(style="font-size:40px;margin-top:120px;")
+    div(style="margin-top: 10px;")
+      h4 Aguarde...

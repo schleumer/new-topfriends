@@ -1,1 +1,149 @@
+@gray-base:              #000;
+@gray-darker:            lighten(@gray-base, 13.5%); // #222
+@gray-dark:              lighten(@gray-base, 20%);   // #333
+@gray:                   lighten(@gray-base, 33.5%); // #555
+@gray-light:             lighten(@gray-base, 60%);   // #999
+@gray-lighter:           lighten(@gray-base, 90%); // #eee
+
+@brand-primary:         #3a5795;
+@brand-success:         #3FB618;
+@brand-info:            #9954BB;
+@brand-warning:         #FF7518;
+@brand-danger:          #FF0039;
+
+@import './_reset.less';
 @import './_pure.less';
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,700);
+@import url(/components/font-awesome/css/font-awesome.min.css);
+
+.fa.spaced {
+  margin-right: 10px;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.clearfix {
+  clear: both;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 220%;
+}
+
+h2 {
+  font-size: 180%;
+}
+
+h3 {
+  font-size: 160%;
+}
+
+h4 {
+  font-size: 140%;
+}
+
+h5 {
+  font-size: 120%;
+}
+
+h6 {
+  font-size: 100%;
+}
+
+html {
+  font-family: Roboto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.button-xsmall {
+    font-size: 70%;
+}
+.button-small {
+    font-size: 85%;
+}
+.button-large {
+    font-size: 110%;
+}
+.button-xlarge {
+    font-size: 125%;
+}
+
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+    background: @brand-success; /* this is a green */
+}
+
+.button-error {
+    background: @brand-danger; /* this is a maroon */
+}
+
+.button-warning {
+    background: @brand-warning; /* this is an orange */
+}
+
+.button-secondary {
+    background: @gray; /* this is a light blue */
+}
+
+
+.content {
+  margin: 10px auto;
+  width: 900px;
+  min-width: 450px;
+  header {
+    line-height: 48px;
+    height: 48px;
+    padding-top: 10px;
+    span {
+      display: block;
+      float: left;
+      font-size: 30px;
+      font-weight: lighter;
+    }
+    img {
+      margin-right: 10px;
+      display: block;
+      float: left;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+.alert {
+  padding: 10px;
+  &.alert-primary {
+    border-left: 2px solid @brand-primary;
+  }
+}
+
+.main-button {
+  margin-top: 100px;
+}
