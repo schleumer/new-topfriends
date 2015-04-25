@@ -1,0 +1,30 @@
+div.index-view
+  div.logo.text-center
+    img(src="icons/128.png")
+
+  div.loading-text
+    div.text-center(ng-if="loading == 1")
+      b Verificando disponibilidade...
+    
+    div.text-center(ng-if="loading == 2")
+      b Pedindo informações ao Facebook...
+    
+    div.text-center(ng-if="loading == 99")
+      b Houve um problema ao conectar com a aba aberta do Facebook, recarregue a aba do Facebook e tente novamente
+  
+  div(ng-if="!loading")
+    div.center-box
+      div.text-center
+        form(target="_blank", action=api_address + "/do", method="post")
+          button.q-button.q-button-primary(type="submit", ng-click="send()") Gerar imagem
+          //- this might be just wrong
+          input(type="hidden", name="data", value="{{ getThreads() }}")
+        button.q-button(type="button", ng-click="showSharedData()") 
+          | Visualizar dados
+          b *
+      
+        footer
+          b *
+          |  [Avançado] Você pode visualizar os dados antes deles serem enviados :)
+      
+      pre(ng-if="isSharedDataShown") {{ getThreads() | json }}

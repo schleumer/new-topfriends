@@ -1,0 +1,25 @@
+{
+  "name": "new-topfriends",
+  "version": "1.0.0",
+  "description": "Nova versão do topfriends feita totalmente na coxa com muito amor e carinho :heart:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schleumer/new-topfriends.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/schleumer/new-topfriends/issues"
+  },
+  "homepage": "https://github.com/schleumer/new-topfriends#readme",
+  "dependencies": {
+    "express": "^4.12.3"
+  },
+  "devDependencies": {
+    "LiveScript": "^1.3.1"
+  }
+}

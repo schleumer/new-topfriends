@@ -1,0 +1,1475 @@
+/*!
+Pure v0.6.0
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+https://github.com/yahoo/pure/blob/master/LICENSE.md
+*/
+/*!
+normalize.css v^3.0 | MIT License | git.io/normalize
+Copyright (c) Nicolas Gallagher and Jonathan Neal
+*/
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box; /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+/*csslint important:false*/
+
+/* ==========================================================================
+   Pure Base Extras
+   ========================================================================== */
+
+/**
+ * Extra rules that Pure adds on top of Normalize.css
+ */
+
+/**
+ * Always hide an element when it has the `hidden` HTML attribute.
+ */
+
+.hidden,
+[hidden] {
+    display: none !important;
+}
+
+/**
+ * Add this class to an image to make it fit within it's fluid parent wrapper while maintaining
+ * aspect ratio.
+ */
+.q-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/*csslint regex-selectors:false, known-properties:false, duplicate-properties:false*/
+
+.q-g {
+    letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+    *letter-spacing: normal; /* reset IE < 8 */
+    *word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
+    text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+
+    /*
+    Sets the font stack to fonts known to work properly with the above letter
+    and word spacings. See: https://github.com/yahoo/pure/issues/41/
+
+    The following font stack makes Pure Grids work on all known environments.
+
+    * FreeSans: Ships with many Linux distros, including Ubuntu
+
+    * Arimo: Ships with Chrome OS. Arimo has to be defined before Helvetica and
+      Arial to get picked up by the browser, even though neither is available
+      in Chrome OS.
+
+    * Droid Sans: Ships with all versions of Android.
+
+    * Helvetica, Arial, sans-serif: Common font stack on OS X and Windows.
+    */
+    font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+
+    /*
+    Use flexbox when possible to avoid `letter-spacing` side-effects.
+
+    NOTE: Firefox (as of 25) does not currently support flex-wrap, so the
+    `-moz-` prefix version is omitted.
+    */
+
+    display: -webkit-flex;
+    -webkit-flex-flow: row wrap;
+
+    /* IE10 uses display: flexbox */
+    display: -ms-flexbox;
+    -ms-flex-flow: row wrap;
+    
+    /* Prevents distributing space between rows */
+    -ms-align-content: flex-start;
+    -webkit-align-content: flex-start;
+    align-content: flex-start;
+}
+
+/* Opera as of 12 on Windows needs word-spacing.
+   The ".opera-only" selector is used to prevent actual prefocus styling
+   and is not required in markup.
+*/
+.opera-only :-o-prefocus,
+.q-g {
+    word-spacing: -0.43em;
+}
+
+.q-u {
+    display: inline-block;
+    *display: inline; /* IE < 8: fake inline-block */
+    zoom: 1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+}
+
+/*
+Resets the font family back to the OS/browser's default sans-serif font,
+this the same font stack that Normalize.css sets for the `body`.
+*/
+.q-g [class *= "q-u"] {
+    font-family: sans-serif;
+}
+
+.q-u-1,
+.q-u-1-1,
+.q-u-1-2,
+.q-u-1-3,
+.q-u-2-3,
+.q-u-1-4,
+.q-u-3-4,
+.q-u-1-5,
+.q-u-2-5,
+.q-u-3-5,
+.q-u-4-5,
+.q-u-5-5,
+.q-u-1-6,
+.q-u-5-6,
+.q-u-1-8,
+.q-u-3-8,
+.q-u-5-8,
+.q-u-7-8,
+.q-u-1-12,
+.q-u-5-12,
+.q-u-7-12,
+.q-u-11-12,
+.q-u-1-24,
+.q-u-2-24,
+.q-u-3-24,
+.q-u-4-24,
+.q-u-5-24,
+.q-u-6-24,
+.q-u-7-24,
+.q-u-8-24,
+.q-u-9-24,
+.q-u-10-24,
+.q-u-11-24,
+.q-u-12-24,
+.q-u-13-24,
+.q-u-14-24,
+.q-u-15-24,
+.q-u-16-24,
+.q-u-17-24,
+.q-u-18-24,
+.q-u-19-24,
+.q-u-20-24,
+.q-u-21-24,
+.q-u-22-24,
+.q-u-23-24,
+.q-u-24-24 {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+}
+
+.q-u-1-24 {
+    width: 4.1667%;
+    *width: 4.1357%;
+}
+
+.q-u-1-12,
+.q-u-2-24 {
+    width: 8.3333%;
+    *width: 8.3023%;
+}
+
+.q-u-1-8,
+.q-u-3-24 {
+    width: 12.5000%;
+    *width: 12.4690%;
+}
+
+.q-u-1-6,
+.q-u-4-24 {
+    width: 16.6667%;
+    *width: 16.6357%;
+}
+
+.q-u-1-5 {
+    width: 20%;
+    *width: 19.9690%;
+}
+
+.q-u-5-24 {
+    width: 20.8333%;
+    *width: 20.8023%;
+}
+
+.q-u-1-4,
+.q-u-6-24 {
+    width: 25%;
+    *width: 24.9690%;
+}
+
+.q-u-7-24 {
+    width: 29.1667%;
+    *width: 29.1357%;
+}
+
+.q-u-1-3,
+.q-u-8-24 {
+    width: 33.3333%;
+    *width: 33.3023%;
+}
+
+.q-u-3-8,
+.q-u-9-24 {
+    width: 37.5000%;
+    *width: 37.4690%;
+}
+
+.q-u-2-5 {
+    width: 40%;
+    *width: 39.9690%;
+}
+
+.q-u-5-12,
+.q-u-10-24 {
+    width: 41.6667%;
+    *width: 41.6357%;
+}
+
+.q-u-11-24 {
+    width: 45.8333%;
+    *width: 45.8023%;
+}
+
+.q-u-1-2,
+.q-u-12-24 {
+    width: 50%;
+    *width: 49.9690%;
+}
+
+.q-u-13-24 {
+    width: 54.1667%;
+    *width: 54.1357%;
+}
+
+.q-u-7-12,
+.q-u-14-24 {
+    width: 58.3333%;
+    *width: 58.3023%;
+}
+
+.q-u-3-5 {
+    width: 60%;
+    *width: 59.9690%;
+}
+
+.q-u-5-8,
+.q-u-15-24 {
+    width: 62.5000%;
+    *width: 62.4690%;
+}
+
+.q-u-2-3,
+.q-u-16-24 {
+    width: 66.6667%;
+    *width: 66.6357%;
+}
+
+.q-u-17-24 {
+    width: 70.8333%;
+    *width: 70.8023%;
+}
+
+.q-u-3-4,
+.q-u-18-24 {
+    width: 75%;
+    *width: 74.9690%;
+}
+
+.q-u-19-24 {
+    width: 79.1667%;
+    *width: 79.1357%;
+}
+
+.q-u-4-5 {
+    width: 80%;
+    *width: 79.9690%;
+}
+
+.q-u-5-6,
+.q-u-20-24 {
+    width: 83.3333%;
+    *width: 83.3023%;
+}
+
+.q-u-7-8,
+.q-u-21-24 {
+    width: 87.5000%;
+    *width: 87.4690%;
+}
+
+.q-u-11-12,
+.q-u-22-24 {
+    width: 91.6667%;
+    *width: 91.6357%;
+}
+
+.q-u-23-24 {
+    width: 95.8333%;
+    *width: 95.8023%;
+}
+
+.q-u-1,
+.q-u-1-1,
+.q-u-5-5,
+.q-u-24-24 {
+    width: 100%;
+}
+.q-button {
+    /* Structure */
+    display: inline-block;
+    zoom: 1;
+    line-height: normal;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* Firefox: Get rid of the inner focus border */
+.q-button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+/*csslint outline-none:false*/
+
+.q-button {
+    font-family: inherit;
+    font-size: 100%;
+    padding: 0.5em 1em;
+    color: #444; /* rgba not supported (IE 8) */
+    color: rgba(0, 0, 0, 0.80); /* rgba supported */
+    border: 1px solid #999;  /*IE 6/7/8*/
+    border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
+    background-color: #E6E6E6;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.q-button-hover,
+.q-button:hover,
+.q-button:focus {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0,0,0, 0.05)), to(rgba(0,0,0, 0.10)));
+    background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+    background-image: -moz-linear-gradient(top, rgba(0,0,0, 0.05) 0%, rgba(0,0,0, 0.10));
+    background-image: -o-linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+    background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+}
+.q-button:focus {
+    outline: 0;
+}
+.q-button-active,
+.q-button:active {
+    box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
+    border-color: #000\9;
+}
+
+.q-button[disabled],
+.q-button-disabled,
+.q-button-disabled:hover,
+.q-button-disabled:focus,
+.q-button-disabled:active {
+    border: none;
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    filter: alpha(opacity=40);
+    -khtml-opacity: 0.40;
+    -moz-opacity: 0.40;
+    opacity: 0.40;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.q-button-hidden {
+    display: none;
+}
+
+/* Firefox: Get rid of the inner focus border */
+.q-button::-moz-focus-inner{
+    padding: 0;
+    border: 0;
+}
+
+.q-button-primary,
+.q-button-selected,
+a.q-button-primary,
+a.q-button-selected {
+    background-color: rgb(0, 120, 231);
+    color: #fff;
+}
+
+/*csslint box-model:false*/
+/*
+Box-model set to false because we're setting a height on select elements, which
+also have border and padding. This is done because some browsers don't render
+the padding. We explicitly set the box-model for select elements to border-box,
+so we can ignore the csslint warning.
+*/
+
+.q-form input[type="text"],
+.q-form input[type="password"],
+.q-form input[type="email"],
+.q-form input[type="url"],
+.q-form input[type="date"],
+.q-form input[type="month"],
+.q-form input[type="time"],
+.q-form input[type="datetime"],
+.q-form input[type="datetime-local"],
+.q-form input[type="week"],
+.q-form input[type="number"],
+.q-form input[type="search"],
+.q-form input[type="tel"],
+.q-form input[type="color"],
+.q-form select,
+.q-form textarea {
+    padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.q-form input:not([type]) {
+    padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* Chrome (as of v.32/34 on OS X) needs additional room for color to display. */
+/* May be able to remove this tweak as color inputs become more standardized across browsers. */
+.q-form input[type="color"] {
+    padding: 0.2em 0.5em;
+}
+
+
+.q-form input[type="text"]:focus,
+.q-form input[type="password"]:focus,
+.q-form input[type="email"]:focus,
+.q-form input[type="url"]:focus,
+.q-form input[type="date"]:focus,
+.q-form input[type="month"]:focus,
+.q-form input[type="time"]:focus,
+.q-form input[type="datetime"]:focus,
+.q-form input[type="datetime-local"]:focus,
+.q-form input[type="week"]:focus,
+.q-form input[type="number"]:focus,
+.q-form input[type="search"]:focus,
+.q-form input[type="tel"]:focus,
+.q-form input[type="color"]:focus,
+.q-form select:focus,
+.q-form textarea:focus {
+    outline: 0;
+    border-color: #129FEA;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.q-form input:not([type]):focus {
+    outline: 0;
+    border-color: #129FEA;
+}
+
+.q-form input[type="file"]:focus,
+.q-form input[type="radio"]:focus,
+.q-form input[type="checkbox"]:focus {
+    outline: thin solid #129FEA;
+    outline: 1px auto #129FEA;
+}
+.q-form .q-checkbox,
+.q-form .q-radio {
+    margin: 0.5em 0;
+    display: block;
+}
+
+.q-form input[type="text"][disabled],
+.q-form input[type="password"][disabled],
+.q-form input[type="email"][disabled],
+.q-form input[type="url"][disabled],
+.q-form input[type="date"][disabled],
+.q-form input[type="month"][disabled],
+.q-form input[type="time"][disabled],
+.q-form input[type="datetime"][disabled],
+.q-form input[type="datetime-local"][disabled],
+.q-form input[type="week"][disabled],
+.q-form input[type="number"][disabled],
+.q-form input[type="search"][disabled],
+.q-form input[type="tel"][disabled],
+.q-form input[type="color"][disabled],
+.q-form select[disabled],
+.q-form textarea[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.q-form input:not([type])[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+}
+.q-form input[readonly],
+.q-form select[readonly],
+.q-form textarea[readonly] {
+    background-color: #eee; /* menu hover bg color */
+    color: #777; /* menu text color */
+    border-color: #ccc;
+}
+
+.q-form input:focus:invalid,
+.q-form textarea:focus:invalid,
+.q-form select:focus:invalid {
+    color: #b94a48;
+    border-color: #e9322d;
+}
+.q-form input[type="file"]:focus:invalid:focus,
+.q-form input[type="radio"]:focus:invalid:focus,
+.q-form input[type="checkbox"]:focus:invalid:focus {
+    outline-color: #e9322d;
+}
+.q-form select {
+    /* Normalizes the height; padding is not sufficient. */
+    height: 2.25em;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+.q-form select[multiple] {
+    height: auto;
+}
+.q-form label {
+    margin: 0.5em 0 0.2em;
+}
+.q-form fieldset {
+    margin: 0;
+    padding: 0.35em 0 0.75em;
+    border: 0;
+}
+.q-form legend {
+    display: block;
+    width: 100%;
+    padding: 0.3em 0;
+    margin-bottom: 0.3em;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.q-form-stacked input[type="text"],
+.q-form-stacked input[type="password"],
+.q-form-stacked input[type="email"],
+.q-form-stacked input[type="url"],
+.q-form-stacked input[type="date"],
+.q-form-stacked input[type="month"],
+.q-form-stacked input[type="time"],
+.q-form-stacked input[type="datetime"],
+.q-form-stacked input[type="datetime-local"],
+.q-form-stacked input[type="week"],
+.q-form-stacked input[type="number"],
+.q-form-stacked input[type="search"],
+.q-form-stacked input[type="tel"],
+.q-form-stacked input[type="color"],
+.q-form-stacked input[type="file"],
+.q-form-stacked select,
+.q-form-stacked label,
+.q-form-stacked textarea {
+    display: block;
+    margin: 0.25em 0;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.q-form-stacked input:not([type]) {
+    display: block;
+    margin: 0.25em 0;
+}
+.q-form-aligned input,
+.q-form-aligned textarea,
+.q-form-aligned select,
+/* NOTE: q-help-inline is deprecated. Use .q-form-message-inline instead. */
+.q-form-aligned .q-help-inline,
+.q-form-message-inline {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+}
+.q-form-aligned textarea {
+    vertical-align: top;
+}
+
+/* Aligned Forms */
+.q-form-aligned .q-control-group {
+    margin-bottom: 0.5em;
+}
+.q-form-aligned .q-control-group label {
+    text-align: right;
+    display: inline-block;
+    vertical-align: middle;
+    width: 10em;
+    margin: 0 1em 0 0;
+}
+.q-form-aligned .q-controls {
+    margin: 1.5em 0 0 11em;
+}
+
+/* Rounded Inputs */
+.q-form input.q-input-rounded,
+.q-form .q-input-rounded {
+    border-radius: 2em;
+    padding: 0.5em 1em;
+}
+
+/* Grouped Inputs */
+.q-form .q-group fieldset {
+    margin-bottom: 10px;
+}
+.q-form .q-group input,
+.q-form .q-group textarea {
+    display: block;
+    padding: 10px;
+    margin: 0 0 -1px;
+    border-radius: 0;
+    position: relative;
+    top: -1px;
+}
+.q-form .q-group input:focus,
+.q-form .q-group textarea:focus {
+    z-index: 3;
+}
+.q-form .q-group input:first-child,
+.q-form .q-group textarea:first-child {
+    top: 1px;
+    border-radius: 4px 4px 0 0;
+    margin: 0;
+}
+.q-form .q-group input:first-child:last-child,
+.q-form .q-group textarea:first-child:last-child {
+    top: 1px;
+    border-radius: 4px;
+    margin: 0;
+}
+.q-form .q-group input:last-child,
+.q-form .q-group textarea:last-child {
+    top: -2px;
+    border-radius: 0 0 4px 4px;
+    margin: 0;
+}
+.q-form .q-group button {
+    margin: 0.35em 0;
+}
+
+.q-form .q-input-1 {
+    width: 100%;
+}
+.q-form .q-input-2-3 {
+    width: 66%;
+}
+.q-form .q-input-1-2 {
+    width: 50%;
+}
+.q-form .q-input-1-3 {
+    width: 33%;
+}
+.q-form .q-input-1-4 {
+    width: 25%;
+}
+
+/* Inline help for forms */
+/* NOTE: q-help-inline is deprecated. Use .q-form-message-inline instead. */
+.q-form .q-help-inline,
+.q-form-message-inline {
+    display: inline-block;
+    padding-left: 0.3em;
+    color: #666;
+    vertical-align: middle;
+    font-size: 0.875em;
+}
+
+/* Block help for forms */
+.q-form-message {
+    display: block;
+    color: #666;
+    font-size: 0.875em;
+}
+
+@media only screen and (max-width : 480px) {
+    .q-form button[type="submit"] {
+        margin: 0.7em 0 0;
+    }
+
+    .q-form input:not([type]),
+    .q-form input[type="text"],
+    .q-form input[type="password"],
+    .q-form input[type="email"],
+    .q-form input[type="url"],
+    .q-form input[type="date"],
+    .q-form input[type="month"],
+    .q-form input[type="time"],
+    .q-form input[type="datetime"],
+    .q-form input[type="datetime-local"],
+    .q-form input[type="week"],
+    .q-form input[type="number"],
+    .q-form input[type="search"],
+    .q-form input[type="tel"],
+    .q-form input[type="color"],
+    .q-form label {
+        margin-bottom: 0.3em;
+        display: block;
+    }
+
+    .q-group input:not([type]),
+    .q-group input[type="text"],
+    .q-group input[type="password"],
+    .q-group input[type="email"],
+    .q-group input[type="url"],
+    .q-group input[type="date"],
+    .q-group input[type="month"],
+    .q-group input[type="time"],
+    .q-group input[type="datetime"],
+    .q-group input[type="datetime-local"],
+    .q-group input[type="week"],
+    .q-group input[type="number"],
+    .q-group input[type="search"],
+    .q-group input[type="tel"],
+    .q-group input[type="color"] {
+        margin-bottom: 0;
+    }
+
+    .q-form-aligned .q-control-group label {
+        margin-bottom: 0.3em;
+        text-align: left;
+        display: block;
+        width: 100%;
+    }
+
+    .q-form-aligned .q-controls {
+        margin: 1.5em 0 0 0;
+    }
+
+    /* NOTE: q-help-inline is deprecated. Use .q-form-message-inline instead. */
+    .q-form .q-help-inline,
+    .q-form-message-inline,
+    .q-form-message {
+        display: block;
+        font-size: 0.75em;
+        /* Increased bottom padding to make it group with its related input element. */
+        padding: 0.2em 0 0.8em;
+    }
+}
+
+/*csslint adjoining-classes: false, box-model:false*/
+.q-menu {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.q-menu-fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
+}
+
+.q-menu-list,
+.q-menu-item {
+    position: relative;
+}
+
+.q-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.q-menu-item {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.q-menu-link,
+.q-menu-heading {
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* HORIZONTAL MENU */
+.q-menu-horizontal {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.q-menu-horizontal .q-menu-list {
+    display: inline-block;
+}
+
+/* Initial menus should be inline-block so that they are horizontal */
+.q-menu-horizontal .q-menu-item,
+.q-menu-horizontal .q-menu-heading,
+.q-menu-horizontal .q-menu-separator {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: middle;
+}
+
+/* Submenus should still be display: block; */
+.q-menu-item .q-menu-item {
+    display: block;
+}
+
+.q-menu-children {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+}
+
+.q-menu-horizontal .q-menu-children {
+    left: 0;
+    top: auto;
+    width: inherit;
+}
+
+.q-menu-allow-hover:hover > .q-menu-children,
+.q-menu-active > .q-menu-children {
+    display: block;
+    position: absolute;
+}
+
+/* Vertical Menus - show the dropdown arrow */
+.q-menu-has-children > .q-menu-link:after {
+    padding-left: 0.5em;
+    content: "\25B8";
+    font-size: small;
+}
+
+/* Horizontal Menus - show the dropdown arrow */
+.q-menu-horizontal .q-menu-has-children > .q-menu-link:after {
+    content: "\25BE";
+}
+
+/* scrollable menus */
+.q-menu-scrollable {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.q-menu-scrollable .q-menu-list {
+    display: block;
+}
+
+.q-menu-horizontal.q-menu-scrollable .q-menu-list {
+    display: inline-block;
+}
+
+.q-menu-horizontal.q-menu-scrollable {
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    /* a little extra padding for this style to allow for scrollbars */
+    padding: .5em 0;
+}
+
+.q-menu-horizontal.q-menu-scrollable::-webkit-scrollbar {
+    display: none;
+}
+
+/* misc default styling */
+
+.q-menu-separator {
+    background-color: #ccc;
+    height: 1px;
+    margin: .3em 0;
+}
+
+.q-menu-horizontal .q-menu-separator {
+    width: 1px;
+    height: 1.3em;
+    margin: 0 .3em ;
+}
+
+.q-menu-heading {
+    text-transform: uppercase;
+    color: #565d64;
+}
+
+.q-menu-link {
+    color: #777;
+}
+
+.q-menu-children {
+    background-color: #fff;
+}
+
+.q-menu-link,
+.q-menu-disabled,
+.q-menu-heading {
+    padding: .5em 1em;
+}
+
+.q-menu-disabled {
+    opacity: .5;
+}
+
+.q-menu-disabled .q-menu-link:hover {
+    background-color: transparent;
+}
+
+.q-menu-active > .q-menu-link,
+.q-menu-link:hover,
+.q-menu-link:focus {
+    background-color: #eee;
+}
+
+.q-menu-selected .q-menu-link,
+.q-menu-selected .q-menu-link:visited {
+    color: #000;
+}
+
+.q-table {
+    /* Remove spacing between table cells (from Normalize.css) */
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid #cbcbcb;
+}
+
+.q-table caption {
+    color: #000;
+    font: italic 85%/1 arial, sans-serif;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.q-table td,
+.q-table th {
+    border-left: 1px solid #cbcbcb;/*  inner column border */
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; /*to make ths where the title is really long work*/
+    padding: 0.5em 1em; /* cell padding */
+}
+
+/* Consider removing this next declaration block, as it causes problems when
+there's a rowspan on the first cell. Case added to the tests. issue#432 */
+.q-table td:first-child,
+.q-table th:first-child {
+    border-left-width: 0;
+}
+
+.q-table thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+/*
+striping:
+   even - #fff (white)
+   odd  - #f2f2f2 (light gray)
+*/
+.q-table td {
+    background-color: transparent;
+}
+.q-table-odd td {
+    background-color: #f2f2f2;
+}
+
+/* nth-child selector for modern browsers */
+.q-table-striped tr:nth-child(2n-1) td {
+    background-color: #f2f2f2;
+}
+
+/* BORDERED TABLES */
+.q-table-bordered td {
+    border-bottom: 1px solid #cbcbcb;
+}
+.q-table-bordered tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}
+
+
+/* HORIZONTAL BORDERED TABLES */
+
+.q-table-horizontal td,
+.q-table-horizontal th {
+    border-width: 0 0 1px 0;
+    border-bottom: 1px solid #cbcbcb;
+}
+.q-table-horizontal tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}

@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+      "name": "Top Friends",
+			"path": "./src/"
+		},
+    {
+      "name": "Project",
+      "path": "./"
+    },
+    {
+      "name": "Extension",
+      "path": "./chrome-extension/src/"
+    }
+	]
+}
