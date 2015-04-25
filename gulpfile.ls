@@ -24,99 +24,72 @@ replace = require 'gulp-replace'
 
 root = './public/'
 
-gulp.task 'clean:scripts', (cb) -> del ['dist/js'], cb
+gulp.task 'clean:scripts', (cb) -> del [path.join(root, 'js')], cb
 
-gulp.task 'clean:stylesheet', (cb) -> del ['dist/css'], cb
+gulp.task 'clean:stylesheet', (cb) -> del [path.join(root, 'css')], cb
 
 gulp.task 'clean:templates', (cb) -> del [
-  'dist/templates',
-  'dist/layouts',
-  'dist/index.html'], cb
+  path.join(root, 'templates'),
+  path.join(root, 'layouts'),
+  path.join(root, 'index.html')], cb
 
-gulp.task 'clean:files', (cb) -> del ['dist/fonts', 'dist/icons'], cb
+gulp.task 'clean:files', (cb) -> del [path.join(root, 'fonts'), path.join(root, 'icons')], cb
 
 gulp.task 'copy-fonts', ->
-  gulp.src('./src/fonts/**/*', {base: './src/'})
-    .pipe(watch('./src/fonts/**/*', {base: './src/'}))
-    .pipe(gulp.dest('./dist/'))
+  gulp.src('./frontend/fonts/**/*', {base: './frontend/'})
+    .pipe(watch('./frontend/fonts/**/*', {base: './frontend/'}))
+    .pipe(gulp.dest(root))
 
 gulp.task 'copy-icons', ->
-  gulp.src('./src/icons/**/*', {base: './src/'})
-    .pipe(watch('./src/icons/**/*', {base: './src/'}))
-    .pipe(gulp.dest('./dist/'))
+  gulp.src('./frontend/icons/**/*', {base: './frontend/'})
+    .pipe(watch('./frontend/icons/**/*', {base: './frontend/'}))
+    .pipe(gulp.dest(root))
 
 gulp.task 'ls', ->
-  b = watchify(browserify("./src/livescript/popup.ls", watchify.args))
+  b = watchify(browserify("./frontend/livescript/app.ls", watchify.args))
   b.transform('liveify')
   b.bundle()
     .on('error', notify.onError("Error compiling livescript! \n <%= error.message %>"))
-    .pipe(source('popup.js'))
-    .pipe(gulp.dest('./dist/js'))
+    .pipe(source('app.js'))
+    .pipe(gulp.dest(path.join(root, 'js')))
     .pipe(notify(message: "Livescript compiled!", on-last: true))
 
 gulp.task 'prepend-ls', ['ls'], ->
-  gulp.src('./dist/js/app.js')
-    .pipe(insert.prepend(fs.readFileSync('./src/helpers/app.js.banner').toString().replace(/\%version\%/g, (new Date()).getTime())))
+  gulp.src(path.join(root, 'js/app.js'))
+    .pipe(insert.prepend(fs.readFileSync('./frontend/helpers/app.js.banner').toString().replace(/\%version\%/g, (new Date()).getTime())))
     .pipe(gulp.dest(path.join(root, 'js')))
 
-gulp.task 'injected-ls', ->
-  b = watchify(browserify("./src/livescript/injected.ls", watchify.args))
-  b.transform('liveify')
-  b.bundle()
-    .on('error', notify.onError("Error compiling livescript! \n <%= error.message %>"))
-    .pipe(source('injected.js'))
-    .pipe(gulp.dest('./dist/js'))
-    .pipe(notify(message: "Livescript compiled!", on-last: true))
-
 gulp.task 'templates', ->
-  locals = {
-    api_address: 'http://local.topfriends.biz:3000'
-  }
+  locals = {}
 
   jadeTask = jade {locals: locals, pretty: true}
 
   jadeTask.on('error', notify.onError("Error compiling jade! \n <%= error.message %>"))
 
-  gulp.src('./src/jade/**/*.jade')
+  gulp.src('./frontend/jade/**/*.jade')
     .pipe(jadeTask)
-    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest(root))
     .pipe(notify(message: "Jade compiled!", on-last: true))
 
 gulp.task 'stylesheet', ->
-  gulp.src(['./src/less/popup.less'], {base: './src/less/'})
+  gulp.src(['./frontend/less/main.less'], {base: './frontend/less/'})
     .pipe(plumber({errorHandler: notify.onError("Error compiling LESS \n <%= error.message %>")}))
-    .pipe(less({paths: [path.join __dirname, 'dist', 'components']}))
-    .pipe(gulp.dest('./dist/css'))
+    .pipe(less({paths: [path.join root, 'components']}))
+    .pipe(gulp.dest(path.join(root, 'css')))
     .pipe(notify(message: "LESS compiled!", on-last: true))
-
-gulp.task 'connect', [
-  'templates'
-], ->
-  connect.server {
-    root: 'dist'
-    livereload: true
-  }
 
 # Watch stuffs
 
-gulp.task 'popup-ls-watch', ->
-  watch('src/livescript/**/*.ls', ['popup-ls'], -> 
-    gulp.start('popup-ls'))
-
-gulp.task 'background-ls-watch', ->
-  watch('src/livescript/**/*.ls', ['background-ls', 'background-prepend'], -> 
-    gulp.start(['background-ls', 'background-prepend']))
-
-gulp.task 'injected-ls-watch', ->
-  watch('src/livescript/**/*.ls', ['injected-ls'], -> 
-    gulp.start('injected-ls'))
+gulp.task 'ls-watch', ->
+  watch('frontend/livescript/**/*.ls', ['ls', 'prepend-ls'], -> 
+    gulp.start(['ls', 'prepend-ls']))
 
 gulp.task 'stylesheet-watch', ['stylesheet'], ->
-  watch('src/less/**/*.less', -> 
+  watch('frontend/less/**/*.less', -> 
     gulp.start('stylesheet'))
 
 gulp.task 'templates-watch', ['templates'], ->
-  watch('src/jade/**/*.jade', -> 
+  watch('frontend/jade/**/*.jade', -> 
     gulp.start('templates'))
 
 gulp.task 'clean', [
@@ -127,19 +100,13 @@ gulp.task 'clean', [
 ]
 
 gulp.task 'default', [
-  'popup-ls'
-  'background-ls'
-  'background-prepend'
-  'injected-ls'
+  'ls'
+  'prepend-ls'
   'stylesheet'
   'templates'
-  'popup-ls-watch'
-  'background-ls-watch'
-  'injected-ls-watch'
+  'ls-watch'
   'stylesheet-watch'
   'templates-watch'
   'copy-fonts'
   'copy-icons'
-  'copy-manifest'
-  'copy-locales'
 ]

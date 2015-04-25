@@ -6,8 +6,21 @@
 			"path": "./backend/"
 		},
     {
+      "name": "Frontend",
+      "path": "./frontend/"
+    },
+    {
       "name": "Project",
-      "path": "./"
+      "path": "./",
+       "folder_exclude_patterns": [
+          "node_modules",
+          "dist",
+          "backend",
+          "frontend",
+          "chrome-extension",
+          "public",
+          ".git"
+      ]
     },
     {
       "name": "Extension",
