@@ -2,8 +2,8 @@
 	"folders":
 	[
 		{
-      "name": "Top Friends",
-			"path": "./src/"
+      "name": "Backend",
+			"path": "./backend/"
 		},
     {
       "name": "Project",

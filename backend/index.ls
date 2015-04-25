@@ -1,6 +1,9 @@
-express = require 'express'
+require! 'express'
+require! 'path'
 
 app = express!
+
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 app.get '/', (req, res) -> res.send 'Hello World!'
 
