@@ -1,0 +1,3 @@
+[submodule "chrome-extension"]
+	path = chrome-extension
+	url = git@github.com:schleumer/chrome-topfriends.git
