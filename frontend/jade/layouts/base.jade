@@ -3,20 +3,20 @@ html(ng-app="TopFriends")
   head
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(charset="UTF-8")
-    title Top Friends
+    title top friends
   body
     .content
       .alert.alert-primary
         | Mudamos de cara, no momento nosso aplicativo só irá suportar o Top Chat, em breve traremos os outros de volta ;)
       nav#top-bar
-        div.pull-left
+        div
           h1
             img(src="/icons/48.png")
-            span Top Friends
-        div.pull-right
-          div(ng-if="user")
+        div.infos.pull-right
+          span(ng-if="user")
+            img.picture(ng-src="{{'//graph.facebook.com/' + user.id + '/picture'}}")
             span(ng-bind="user.name")
-          button.q-button.button-error(ng-click="deleteUser()")
+          button.q-button.button-error.button-xsmall(ng-click="deleteUser()")
             i.fa.fa-trash.spaced
             | DELETE
       block content

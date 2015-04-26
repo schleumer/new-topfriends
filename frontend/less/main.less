@@ -117,6 +117,8 @@ html {
     height: 48px;
     padding-top: 10px;
     h1 {
+      margin: 0px;
+      padding: 0px;
       span {
         display: block;
         float: left;
@@ -128,6 +130,19 @@ html {
         display: block;
         float: left;
       }
+    }
+
+    .infos {
+      height: 48px;
+      line-height: 48px;
+      .picture {
+        float: left;
+        height: 38px;
+        margin-top: 5px;
+        margin-right: 8px;
+        border-radius: 38px;
+      }
+      text-transform: lowercase;
     }
   }
 }
@@ -142,7 +157,7 @@ html {
 .alert {
   padding: 10px;
   &.alert-primary {
-    border-left: 2px solid @brand-primary;
+    border-left: 4px solid @brand-primary;
   }
 }
 
