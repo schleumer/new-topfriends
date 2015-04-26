@@ -1,7 +1,8 @@
 require! 'angular'
 require! 'angular-route'
+require! 'angular-local-storage'
 
-app = angular.module('TopFriends', ['ngRoute'])
+app = angular.module('TopFriends', ['ngRoute', 'LocalStorageModule'])
 
 window.__facebookLoaded = false;
 
@@ -12,7 +13,7 @@ app.config ['$routeProvider', ($routeProvider) ->
   })
 ]
 
-app.run ['$rootScope', ($rootScope) ->
+app.run ['$rootScope', 'localStorageService', ($rootScope, localStorageService) ->
   $rootScope.facebookLoaded = window.__facebookLoaded
   window.__facebookInitiaded = ->
     $rootScope.$apply ->
@@ -21,25 +22,41 @@ app.run ['$rootScope', ($rootScope) ->
 
   $rootScope.deleteUser = ->
     FB.api('/me/permissions', 'delete', (x) -> 
-      console.log(x)
+      localStorageService.clearAll!
       location.reload!
     )
 ]
 
-app.controller 'IndexController', ['$scope', '$rootScope', ($scope, $rootScope) ->
+app.service 'fb', 
+
+app.controller 'IndexController', [
+'$scope', '$rootScope', 'localStorageService',
+($scope, $rootScope, localStorageService) ->
   $scope.loading = 1
   $scope.logged-in = false
   $scope.checking-login = true
 
+  #if localStorage.loginInfo
+  #  $scope.checking-login = false
+  #  $scope.logged-in = true
+  #  $scope.fetch-user!
+  #else
   FB.getLoginStatus (response) ->
     $scope.$apply ->
       $scope.checking-login = false
       $scope.logged-in = response.status == \connected
-      $scope.fetch-user! if $scope.logged-in
+      if response.status == \connected
+        localStorageService.set('loginInfo', response)
+        $scope.fetch-user!
 
   $scope.fetch-user = ->
+    storage = localStorageService.get('user')
+    if storage
+      $rootScope.user = storage
+      return
     FB.api("/me", (response) ->
       $scope.$apply ->
+        localStorageService.set('user', response)
         $rootScope.user = response)
 
   $scope.auth = ->

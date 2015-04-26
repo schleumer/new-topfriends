@@ -1,6 +1,7 @@
 extends ./layouts/base
 
 block content
+  pre {{user | json}}
   div(ng-if="facebookLoaded")
     div(ng-view)
   div.text-center(ng-if="!facebookLoaded")
