@@ -1,0 +1,11 @@
+div.text-center.main-button(ng-if="!user")
+  div(ng-if="checkingLogin")
+    div
+      i.fa.fa-spin.fa-spinner(style="font-size:40px;margin-top:20px;")
+    div(style="margin-top: 10px;")
+      h4 Verificando status...
+  div(ng-if="!loggedIn && !checkingLogin")
+    h2(style="margin-bottom:20px;") Parece que você não está logado ainda
+    button.button-xlarge.q-button.q-button-primary(ng-click="auth()")
+      i.fa.fa-facebook-official.spaced
+      span Autorizar

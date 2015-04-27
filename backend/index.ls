@@ -25,7 +25,7 @@ app.get '/', (req, res) -> res.redirect 'index.html'
 app.post '/do', (req, res) -> 
   req.session <<< {
     data: req.body.data |> JSON.parse,
-    next: 'topchat'
+    next: '/topchat'
   }
   res.redirect '/'
 
