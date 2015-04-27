@@ -16,6 +16,9 @@
     "url": "https://github.com/schleumer/new-topfriends/issues"
   },
   "homepage": "https://github.com/schleumer/new-topfriends#readme",
+  "browser": {
+    "fabric": "./public/components/fabric/dist/fabric.min.js"
+  },
   "dependencies": {
     "angular-local-storage": "^0.1.5",
     "body-parser": "^1.12.3",
