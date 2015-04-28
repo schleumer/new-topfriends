@@ -8,9 +8,16 @@ RedisStore = require('connect-redis')(session)
 
 app = express!
 
+allow-cors = (req, res, next) ->
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next!
+
 app.use(body-parser.json!)
 app.use(body-parser.urlencoded { extended: true })
 app.use(multer!)
+app.use(allow-cors)
 
 app.use(session({ 
   resave: false,
@@ -29,7 +36,9 @@ app.post '/do', (req, res) ->
   }
   res.redirect '/'
 
-app.get '/get', (req, res) -> res.send req.session.{data, next}
+app.get '/get', (req, res) -> 
+  res.send require('./test.json')
+  #res.send req.session.{data, next}
 
 server = app.listen 3000, ->
   host = server.address!.address
