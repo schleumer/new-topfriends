@@ -1,3 +1,12 @@
-div.topchat-container
-  canvas.the-canvas
-  div.right-bar
+div#topchat-directive
+  div.topchat-container.pull-left
+    canvas.the-canvas
+  div.right-bar.pull-right(style="padding-top:30px;text-align:left;width:150px;")
+    div.button-list
+      button.q-button(ng-click="toggleFreeDraw()")
+        | Desenhar
+      button.q-button(ng-click="undo()")
+        | Desfazer
+      button.q-button(ng-click="undo()")
+        | Refazer
+  
