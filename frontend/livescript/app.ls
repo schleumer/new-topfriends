@@ -42,7 +42,7 @@ app.config [\$routeProvider, ($route-provider) ->
 
 app.filter \plural ->
   (input, args) ->
-    sprintf (if input > 1 then last args else first args), numeral input .format \"0a"
+    sprintf (if input > 1 then last args else first args), (numeral input .format \"0a")
 
 app.service \topchatThreads ->
   threads = []

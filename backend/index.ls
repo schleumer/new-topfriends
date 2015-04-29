@@ -23,7 +23,7 @@ app.use session {
   resave: no
   save-uninitialized: yes
   store: new RedisStore {}
-  secret: process.env \STORAGE_SECRET or "its a *** secret"
+  secret: process.env[\STORAGE_SECRET] or "its a *** secret"
 }
 
 app.use express.static path.join __dirname, ".." \public
@@ -38,8 +38,8 @@ app.post "/do" (req, res) ->
   res.redirect "/"
 
 app.get "/get" (req, res) ->
-  res.send require "./test.json"
-  #res.send req.session.{data, next}
+  #res.send require "./test.json"
+  res.send req.session.{data, next}
 
 server = app.listen 3000 ->
   host = server.address!address
