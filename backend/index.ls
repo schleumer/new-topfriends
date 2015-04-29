@@ -37,8 +37,8 @@ app.post '/do', (req, res) ->
   res.redirect '/'
 
 app.get '/get', (req, res) -> 
-  res.send require('./test.json')
-  #res.send req.session.{data, next}
+  #res.send require('./test.json')
+  res.send req.session.{data, next}
 
 server = app.listen 3000, ->
   host = server.address!.address

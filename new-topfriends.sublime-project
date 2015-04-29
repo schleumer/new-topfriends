@@ -2,29 +2,30 @@
 	"folders":
 	[
 		{
-      "name": "Backend",
-			"path": "./backend/"
+			"name": "Backend",
+			"path": "backend"
 		},
-    {
-      "name": "Frontend",
-      "path": "./frontend/"
-    },
-    {
-      "name": "Project",
-      "path": "./",
-       "folder_exclude_patterns": [
-          "node_modules",
-          "dist",
-          "backend",
-          "frontend",
-          "chrome-extension",
-          "public",
-          ".git"
-      ]
-    },
-    {
-      "name": "Extension",
-      "path": "./chrome-extension/src/"
-    }
+		{
+			"name": "Frontend",
+			"path": "frontend"
+		},
+		{
+			"folder_exclude_patterns":
+			[
+				"node_modules",
+				"dist",
+				"backend",
+				"frontend",
+				"chrome-extension",
+				"public",
+				".git"
+			],
+			"name": "Project",
+			"path": "."
+		},
+		{
+			"name": "Extension",
+			"path": "chrome-extension/src"
+		}
 	]
 }
