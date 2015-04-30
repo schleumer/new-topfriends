@@ -1,0 +1,8 @@
+{
+  "apps" : [{
+    "name"               : "topfriends",
+    "script"             : "index.js",
+    "cwd"                : ".",
+    "node_args"          : "--harmony"
+  }]
+}
