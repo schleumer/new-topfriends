@@ -18,7 +18,6 @@ export class TimeMachine
         @action = false
         @index = 1
       object.saveState!
-      delete object.originalState.background-color
       @state[@index] = JSON.stringify object.originalState
       console.log(@state[@index])
       @list[@index] = object
@@ -31,16 +30,15 @@ export class TimeMachine
       if @action is true
         @state = [@state[@index2]]
         @list = [@list[@index2]]
-        @action := false
-        @index := 1
+        @action = false
+        @index = 1
       object.saveState!
-      delete object.originalState.background-color
       @state[@index] = JSON.stringify object.originalState
       console.log(@state[@index])
       @list[@index] = object
-      @index := @index + 1
-      @index2 := @index - 1
-      @refresh := true
+      @index = @index + 1
+      @index2 = @index - 1
+      @refresh = true
 
   undo: ->
     if @index <= 0
@@ -51,7 +49,8 @@ export class TimeMachine
       @refresh = false
     @index2 = @index - 1
     @current = @list[@index2]
-    @current.setOptions JSON.parse @state[@index2]
+    console.log(@current)
+    @current.setOptions(JSON.parse(@state[@index2]).{top,left})
     @index = @index - 1
     @current.setCoords!
     @canvas.renderAll!
@@ -62,7 +61,7 @@ export class TimeMachine
     return  if @index >= @state.length - 1
     @index2 = @index + 1
     @current = @list[@index2]
-    @current.setOptions JSON.parse @state[@index2]
+    @current.setOptions(JSON.parse(@state[@index2]).{top,left})
     @index = @index + 1
     @current.setCoords!
     @canvas.renderAll!
