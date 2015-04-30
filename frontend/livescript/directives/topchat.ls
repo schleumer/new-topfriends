@@ -21,23 +21,12 @@ module.exports = [->
       #canvas-el = document.get-element-by-id \the-canvas
 
       canvas = new fabric.Canvas canvas-el, {
-        width: 750
+        width: 900
         height: 650
         is-drawing-mode: no
       }
 
-      hardcoded-positions = [
-        {"x":440,"y":75},
-        {"x":295,"y":88},
-        {"x":196,"y":187},
-        {"x":291,"y":430},
-        {"x":449,"y":430},
-        {"x":635,"y":306},
-        {"x":596,"y":425},
-        {"x":245,"y":307},
-        {"x":661,"y":191},
-        {"x":584,"y":88}
-      ]
+      time-machine := new TimeMachine(canvas)
 
       
       if window.device-pixel-ratio
@@ -51,6 +40,8 @@ module.exports = [->
 
       random-int = (min, max, step = 1) ->
         (Math.floor(Math.random! * ((max - min + 1) / step)) * step) + min
+
+      round-to-step = (number, x, o) -> ~~o + Math.ceil((number - o)/ x ) * x 
 
       get-random-pos = ->
         boundaries =
@@ -69,16 +60,17 @@ module.exports = [->
       calculate-row = (index, factor) -> Math.floor index / factor
       calculate-col = (index, factor) -> index % factor
       #FUCK YEAH PARENTHESES
-      calculate-position = (index, factor) -> {
-        x: (150 * (calculate-col index, 2)) + ((canvas.width / 2) - 75)
-        y: ((100 * (calculate-row index, 2)) + 50) + 100
-      }
+      calculate-position = (index, factor) ->
+        index: index
+        factor: factor
+        col: calculate-col index, factor
+        x: (150 * (calculate-col index, factor)) + ((((canvas.width / 150) - factor) * 75) + 75)
 
-      images-loaded = 0
+        y: ((100 * (calculate-row index, factor)) + 50) + 100
 
       make-thread = (thread, index) ->
-        #pos = hardcoded-positions[index]
-        pos = calculate-position index, 2
+        pos = calculate-position index, (round-to-step threads.length, 5by, 5from) / 5rows
+        console.log(pos)
 
         group = new fabric.Group [] {
           left: pos.x
@@ -89,7 +81,7 @@ module.exports = [->
           origin-y: \center
         }
 
-        text = new fabric.Text thread.target.name, {
+        text = new fabric.Text thread.target.name.to-lower-case!, {
           left: 0
           top: 20
           font-size: 14
@@ -120,8 +112,6 @@ module.exports = [->
         group.has-controls = no
 
         fabric.Image.fromURL thread.target.big_image_src, (o-img) !->
-          images-loaded++
-
           anti-crisp-circle = new fabric.Circle {
             stroke-width: 2,
             stroke: 'white'
@@ -142,9 +132,7 @@ module.exports = [->
 
           group.add o-img, anti-crisp-circle
           canvas.render-all!
-
-          if images-loaded is threads.length
-            time-machine := new TimeMachine(canvas)
+            
 
 
         group.add text, counter
@@ -154,7 +142,7 @@ module.exports = [->
       [ canvas.add obj for obj in threads-group ]
 
       i-text = new fabric.IText 'esses são os amigos com quem mais converso' {
-        left: 375
+        left: 450
         top: 40
         padding: 7
         font-size: 30
@@ -163,7 +151,16 @@ module.exports = [->
         origin-x: \center
       }
 
+      #line = new fabric.Line([canvas.width / 2, 0, canvas.width / 2, canvas.height], {
+      #  fill: \red,
+      #  stroke: \red,
+      #  stroke-width: 1
+      #})
+      #canvas.add line
+
       canvas.add i-text
+      
+
 
       scope.toggle-free-draw = ->
         console.log("xd")

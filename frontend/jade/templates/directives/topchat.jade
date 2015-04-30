@@ -1,12 +1,16 @@
 div#topchat-directive
-  div.topchat-container.pull-left
-    canvas.the-canvas
-  div.right-bar.pull-right(style="padding-top:30px;text-align:left;width:150px;")
+  div.toolbar(style="padding-top:30px;text-align:center;")
     div.button-list
       button.q-button(ng-click="toggleFreeDraw()")
-        | Desenhar
+        i.fa.fa-pencil.spaced
+        | desenhar
       button.q-button(ng-click="undo()")
-        | Desfazer
+        i.fa.fa-undo.spaced
+        | desfazer
       button.q-button(ng-click="undo()")
-        | Refazer
+        i.fa.fa-repeat.spaced
+        | refazer
+  div.topchat-container
+    canvas.the-canvas
+  
   

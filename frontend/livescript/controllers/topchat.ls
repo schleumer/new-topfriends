@@ -5,6 +5,7 @@ module.exports = [
   ($scope, $root-scope, $location, $http, topchat-threads) ->
     $scope.message = null
     $scope.deleted-threads = []
+    $scope.max-friends = 15
 
     if not $root-scope.route-data['/topchat']
       $scope.message = 'Você precisa utilizar a extensão antes'
@@ -24,7 +25,7 @@ module.exports = [
         |> filter (!= thread)
 
     $scope.do = ->
-      topchat-threads.set($scope.threads)
+      topchat-threads.set($scope.threads, $scope.max-friends)
       $location.path('/topchat/image')
 
     $scope.undo-remove = (thread) ->

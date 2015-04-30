@@ -1,1 +1,17 @@
+div(style='margin-top:20px;margin-bottom:40px;text-align:center')
+  button.q-button.q-button-primary.button-large(ng-click='share()')
+    i.fa.fa-send.spaced
+    | compartilhar
+  button.q-button.button-large(ng-click='back()')
+    i.fa.fa-arrow-left.spaced
+    | voltar
+  .clearfix
+
+div
+  .alert.alert-primary
+    i.fa.fa-info
+    b &nbsp; agora você pode editar seu top, clique em quem você quiser e arraste :D 
+    b você também pode editar o titulo clicando duas vezes em "esses são os amigos com quem mais converso"
+    b e desenhar clicando em "desenhar"
+
 topchat(threads='threads')

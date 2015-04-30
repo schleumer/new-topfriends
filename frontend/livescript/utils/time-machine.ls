@@ -2,8 +2,6 @@
 
 export class TimeMachine
   (@canvas) ->
-    @current = void
-    @list = []
     @state = []
     @index = 0
     @index2 = 0
@@ -14,13 +12,13 @@ export class TimeMachine
       object = e.target
       if @action is true
         @state = [@state[@index2]]
-        @list = [@list[@index2]]
         @action = false
         @index = 1
       object.saveState!
-      @state[@index] = JSON.stringify object.originalState
-      console.log(@state[@index])
-      @list[@index] = object
+      @state[@index] = {
+        state: JSON.stringify object.originalState.{top,left}
+        object: object
+      }
       @index = @index + 1
       @index2 = @index - 1
       @refresh = true
@@ -29,13 +27,13 @@ export class TimeMachine
       object = e.target
       if @action is true
         @state = [@state[@index2]]
-        @list = [@list[@index2]]
         @action = false
         @index = 1
       object.saveState!
-      @state[@index] = JSON.stringify object.originalState
-      console.log(@state[@index])
-      @list[@index] = object
+      @state[@index] = {
+        state: JSON.stringify object.originalState.{top,left}
+        object: object
+      }
       @index = @index + 1
       @index2 = @index - 1
       @refresh = true
@@ -48,11 +46,14 @@ export class TimeMachine
       @index = @index - 1
       @refresh = false
     @index2 = @index - 1
-    @current = @list[@index2]
-    console.log(@current)
-    @current.setOptions(JSON.parse(@state[@index2]).{top,left})
+    
+    current = @state[@index2]
+    console.log(current)
+    current.object.setOptions(JSON.parse(current.state))
+
     @index = @index - 1
-    @current.setCoords!
+    current.object.setCoords!
+    
     @canvas.renderAll!
     @action = true
 
@@ -60,8 +61,10 @@ export class TimeMachine
     @action = true
     return  if @index >= @state.length - 1
     @index2 = @index + 1
-    @current = @list[@index2]
-    @current.setOptions(JSON.parse(@state[@index2]).{top,left})
+    current = @state[@index2]
+    current.object.setOptions(JSON.parse(current.state))
+
     @index = @index + 1
-    @current.setCoords!
+    current.object.setCoords!
+    
     @canvas.renderAll!

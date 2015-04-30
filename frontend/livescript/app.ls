@@ -4,7 +4,7 @@ require! \angular-local-storage
 require! \numeral
 require! \fabric
 
-{ each, filter, first, sort, sort-by, reverse, last } = require \prelude-ls
+{ each, filter, first, sort, sort-by, reverse, last, take } = require \prelude-ls
 
 { sprintf } = require \sprintf-js
 
@@ -47,7 +47,7 @@ app.filter \plural ->
 app.service \topchatThreads ->
   threads = []
   get: -> threads
-  set: (t) -> threads := t
+  set: (t, max-friends = 10) -> threads := t |> take (max-friends)
 
 app.run [
   \$rootScope \localStorageService \$location, 
