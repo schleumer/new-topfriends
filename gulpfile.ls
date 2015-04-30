@@ -41,8 +41,13 @@ gulp.task 'copy-fonts', ->
     .pipe(gulp.dest(root))
 
 gulp.task 'copy-icons', ->
-  gulp.src('./frontend/icons/**/*', {base: './frontend/'})
+  gulp.src(['./frontend/icons/**/*', './frontend/favicon.ico'], {base: './frontend/'})
     .pipe(watch('./frontend/icons/**/*', {base: './frontend/'}))
+    .pipe(gulp.dest(root))
+
+gulp.task 'copy-images', ->
+  gulp.src('./frontend/images/**/*', {base: './frontend/'})
+    .pipe(watch('./frontend/images/**/*', {base: './frontend/'}))
     .pipe(gulp.dest(root))
 
 gulp.task 'ls', ->
@@ -60,7 +65,9 @@ gulp.task 'prepend-ls', ['ls'], ->
     .pipe(gulp.dest(path.join(root, 'js')))
 
 gulp.task 'templates', ->
-  locals = {}
+  locals = {
+    DEV: if process.env["DEV"] then true else false
+  }
 
   jadeTask = jade {locals: locals, pretty: true}
 
@@ -92,6 +99,10 @@ gulp.task 'templates-watch', ['templates'], ->
   watch('frontend/jade/**/*.jade', -> 
     gulp.start('templates'))
 
+gulp.task 'images-watch', ['copy-images'], ->
+  watch('frontend/images/**/*', -> 
+    gulp.start('copy-images'))
+
 gulp.task 'clean', [
   'clean:scripts',
   'clean:stylesheet',
@@ -109,4 +120,6 @@ gulp.task 'default', [
   'templates-watch'
   'copy-fonts'
   'copy-icons'
+  'copy-images'
+  'images-watch'
 ]

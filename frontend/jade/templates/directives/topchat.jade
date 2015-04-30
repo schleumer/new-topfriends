@@ -1,16 +1,50 @@
-div#topchat-directive
-  div.toolbar(style="padding-top:30px;text-align:center;")
-    div.button-list
-      button.q-button(ng-click="toggleFreeDraw()")
-        i.fa.fa-pencil.spaced
-        | desenhar
-      button.q-button(ng-click="undo()")
-        i.fa.fa-undo.spaced
-        | desfazer
-      button.q-button(ng-click="undo()")
-        i.fa.fa-repeat.spaced
-        | refazer
-  div.topchat-container
-    canvas.the-canvas
+div(ng-show="!message")
+  div(style='margin-top:20px;margin-bottom:40px;text-align:center')
+    button.q-button.q-button-primary.button-large(ng-click='share()')
+      i.fa.fa-send.spaced
+      | compartilhar
+    button.q-button.button-large(ng-click='back()')
+      i.fa.fa-arrow-left.spaced
+      | voltar
+    .clearfix
   
+  div#topchat-directive
+    div.toolbar(style="padding-top:30px;text-align:center;")
+      div.button-list
+        input.color-picker(type="color", style="vertical-align:middle;line-height:0px;height:30px;", ng-model="brushColor")
+        input.number-picker(type="range", min="1", max="100", style="height: 30px;vertical-align: middle;", ng-model="brushSize")
+        button.q-button(ng-click="toggleFreeDraw()", ng-if="!isDrawing")
+          i.fa.fa-pencil.spaced
+          | desenhar
+        button.q-button(ng-click="toggleFreeDraw()", ng-if="isDrawing")
+          i.fa.fa-pencil.spaced
+          | parar de desenhar
   
+        // TODO: terminar a TimeMachine
+        // button.q-button(ng-click="undo()")
+        //   i.fa.fa-undo.spaced
+        //   | desfazer
+  
+        button.q-button(ng-click="clear()")
+          i.fa.fa-eraser.spaced
+          | limpar
+  
+        button.q-button(ng-click="addMe()")
+          | adicionar minha foto
+  
+    div.topchat-container
+      canvas.the-canvas
+div(ng-show="message", style="margin-top: 100px;")
+  div(style="text-align: center;")
+    i.fa.fa-spin.element-animation(ng-if="messageSpin", ng-class="messageClass", style="font-size:40px;")
+    i.fa(ng-if="!messageSpin", ng-class="messageClass", style="font-size:40px;")
+
+    h3 {{ message }}
+    span(ng-if="url", style="margin-top: 20px;display: inline-block;")
+      a.q-button.q-button-primary.button-large(ng-href="{{url}}", target="_blank") 
+        i.fa.fa-facebook-square.spaced
+        | acesse o post
+      button.q-button.button-large(ng-click='back()')
+        i.fa.fa-arrow-left.spaced
+        | voltar
+      

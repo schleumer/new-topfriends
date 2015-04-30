@@ -3,68 +3,42 @@
 export class TimeMachine
   (@canvas) ->
     @state = []
-    @index = 0
-    @index2 = 0
-    @action = false
-    @refresh = true
+    @index = -1
+    @on-top = no
 
-    @canvas.on 'object:added', (e) ~>
+    mod = (action, e) ~~>
+      @index++
+
       object = e.target
-      if @action is true
-        @state = [@state[@index2]]
-        @action = false
-        @index = 1
       object.saveState!
+
       @state[@index] = {
-        state: JSON.stringify object.originalState.{top,left}
+        state: JSON.stringify object.originalState.{top, left, id}
         object: object
       }
-      @index = @index + 1
-      @index2 = @index - 1
-      @refresh = true
 
-    @canvas.on 'object:modified', (e) ~>
-      object = e.target
-      if @action is true
-        @state = [@state[@index2]]
-        @action = false
-        @index = 1
-      object.saveState!
-      @state[@index] = {
-        state: JSON.stringify object.originalState.{top,left}
-        object: object
-      }
-      @index = @index + 1
-      @index2 = @index - 1
-      @refresh = true
+      
+      @on-top = yes
+
+    @canvas.on 'object:added', mod 'added'
+    @canvas.on 'object:modified', mod 'modified'
+
+  clear: ->
+    @state = []
+    @index = -1
 
   undo: ->
-    if @index <= 0
-      @index = 0
-      return 
-    if @refresh is true
-      @index = @index - 1
-      @refresh = false
-    @index2 = @index - 1
+    return if @index < 0
     
-    current = @state[@index2]
-    console.log(current)
-    current.object.setOptions(JSON.parse(current.state))
+    if @on-top and @index >= 1
+      @index--
 
-    @index = @index - 1
+    current = @state[@index]
+
+    old-state = JSON.parse current.state
+
+    current.object.setOptions old-state
+
     current.object.setCoords!
-    
-    @canvas.renderAll!
-    @action = true
 
-  redo: ->
-    @action = true
-    return  if @index >= @state.length - 1
-    @index2 = @index + 1
-    current = @state[@index2]
-    current.object.setOptions(JSON.parse(current.state))
-
-    @index = @index + 1
-    current.object.setCoords!
-    
     @canvas.renderAll!

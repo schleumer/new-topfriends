@@ -81,6 +81,9 @@ html {
 .button-xlarge {
     font-size: 125%;
 }
+.button-xxlarge {
+    font-size: 140%;
+}
 
 .button-success,
 .button-error,
@@ -113,9 +116,19 @@ html {
   width: 900px;
   min-width: 450px;
   #top-bar {
-    line-height: 48px;
-    height: 48px;
+    line-height: 64px;
+    height: 64px;
     padding-top: 10px;
+    .q-menu {
+      .q-menu-heading {
+        line-height: 0px;
+      }
+      ul {
+        .q-menu-link {
+          line-height: 48px;
+        }
+      }
+    }
     h1 {
       margin: 0px;
       padding: 0px;
@@ -133,12 +146,12 @@ html {
     }
 
     .infos {
-      height: 48px;
-      line-height: 48px;
+      height: 64px;
+      line-height: 64px;
       .picture {
         float: left;
         height: 38px;
-        margin-top: 5px;
+        margin-top: 12px;
         margin-right: 8px;
         border-radius: 38px;
       }
@@ -246,4 +259,12 @@ html {
       }
     }
   }
+}
+
+kbd {
+  background-color: #eee;
+  padding: 3px;
+  border-radius: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
 }

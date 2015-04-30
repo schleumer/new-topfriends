@@ -1,30 +1,73 @@
+# WHAT THE F**KING F**K
+
 { fabric } = require \fabric
+{ sort-by, reverse } = require \prelude-ls
 
 require! \numeral
 
 { TimeMachine } = require '../utils/time-machine.ls'
 
-module.exports = [->
+module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout'
+($location, $route, $root-scope, $http, $timeout) ->
   return {
     template-url: 'templates/directives/topchat.html',
     scope: {
       'threads': '='
     },
-    link: (scope, element) ->
+    link: (scope, element) -> $timeout ->
+      scope.brush-size = 1
+      scope.brush-color = "#000000"
+      scope.message = null
+      scope.message-class = null
+      scope.message-spin = true
+      canvas = null
       time-machine = null
+
       # -----
-      threads = scope.threads
+      threads = scope.threads |> sort-by (.message_count) |> reverse
+
       el = element[0]
       container = el.get-elements-by-class-name('topchat-container')[0]
       canvas-el = el.get-elements-by-class-name('the-canvas')[0]
 
       #canvas-el = document.get-element-by-id \the-canvas
 
-      canvas = new fabric.Canvas canvas-el, {
+      canvas := new fabric.Canvas canvas-el, {
         width: 900
         height: 650
         is-drawing-mode: no
       }
+
+      scope.$watch 'brushColor' (new-val) ->
+        canvas.free-drawing-brush.color = new-val
+
+      scope.$watch 'brushSize' (new-val) ->
+        console.log('xddd')
+        canvas.free-drawing-brush.width = new-val
+
+      document.add-event-listener "keydown" (e) ->
+        switch e.keyCode
+        | 46 => canvas.remove canvas.getActiveObject!
+
+
+      window.add-event-listener "paste" (e) ->
+        clip-data = event.clipboardData
+        for item in clip-data.items
+          type = item.type
+          console.log(type)
+          if type.index-of("image") is not -1
+            data = item.get-as-file!
+            image-url = window.URL.create-objectURL data
+            fabric.Image.fromURL image-url, (o-img) !->
+              o-img
+                ..left     = 0
+                ..top      = 0
+                ..origin-x = \left
+                ..origin-y = \top
+                ..scale 1
+              canvas.add o-img
+              canvas.render-all!
+
 
       time-machine := new TimeMachine(canvas)
 
@@ -43,34 +86,15 @@ module.exports = [->
 
       round-to-step = (number, x, o) -> ~~o + Math.ceil((number - o)/ x ) * x 
 
-      get-random-pos = ->
-        boundaries =
-          min-x: 75
-          min-y: 50
-          max-x: 825
-          max-y: 450
-          #min-x: -450
-          #min-y: -250
-          #max-x: 375
-          #max-y: 200
-
-        x: random-int boundaries.min-x, boundaries.max-x
-        y: random-int boundaries.min-y, boundaries.max-y
-
       calculate-row = (index, factor) -> Math.floor index / factor
       calculate-col = (index, factor) -> index % factor
       #FUCK YEAH PARENTHESES
       calculate-position = (index, factor) ->
-        index: index
-        factor: factor
-        col: calculate-col index, factor
         x: (150 * (calculate-col index, factor)) + ((((canvas.width / 150) - factor) * 75) + 75)
-
         y: ((100 * (calculate-row index, factor)) + 50) + 100
 
       make-thread = (thread, index) ->
         pos = calculate-position index, (round-to-step threads.length, 5by, 5from) / 5rows
-        console.log(pos)
 
         group = new fabric.Group [] {
           left: pos.x
@@ -80,6 +104,8 @@ module.exports = [->
           origin-x: \center
           origin-y: \center
         }
+
+        group.id = "thread.#{thread.target.fbid}"
 
         text = new fabric.Text thread.target.name.to-lower-case!, {
           left: 0
@@ -111,7 +137,9 @@ module.exports = [->
         text-counter.has-controls = no
         group.has-controls = no
 
-        fabric.Image.fromURL thread.target.big_image_src, (o-img) !->
+
+        path = encode-URI-component "/#{thread.target.fbid}/picture?width=64&height=64"
+        fabric.Image.fromURL "/facebook-proxy?path=#{path}", (o-img) !->
           anti-crisp-circle = new fabric.Circle {
             stroke-width: 2,
             stroke: 'white'
@@ -132,6 +160,7 @@ module.exports = [->
 
           group.add o-img, anti-crisp-circle
           canvas.render-all!
+          time-machine.clear!
             
 
 
@@ -151,6 +180,8 @@ module.exports = [->
         origin-x: \center
       }
 
+      i-text.id = "title"
+
       #line = new fabric.Line([canvas.width / 2, 0, canvas.width / 2, canvas.height], {
       #  fill: \red,
       #  stroke: \red,
@@ -159,16 +190,82 @@ module.exports = [->
       #canvas.add line
 
       canvas.add i-text
-      
-
 
       scope.toggle-free-draw = ->
-        console.log("xd")
-        canvas.is-drawing-mode = !canvas.is-drawing-mode
+        scope.is-drawing = !scope.is-drawing
+        canvas.is-drawing-mode = scope.is-drawing
 
       scope.redo = -> time-machine.redo!
 
       scope.undo = -> time-machine.undo!
+
+      scope.clear = -> $route.reload!
+
+      scope.back = !-> $location.path('/topchat')
+
+      scope.share = ->
+        canvas.deactivateAll!renderAll!
+
+        scope.url = null
+        scope.message = "processando a imagem :)"
+        scope.message-spin = true
+        scope.message-class = "fa-cog"
+        $http.post '/base64-proxy', {
+          image: canvas.to-data-URL!
+        } .then((res) ->
+          scope.url = null
+          scope.message-class = "fa-spinner"
+          scope.message-spin = true
+          scope.message = "enviando a imagem para o Facebook :D"
+          FB.api('/photos', 'post', {
+            url: res.data
+          }, (response) ->
+            scope.$apply ->
+              scope.message-class = "fa-thumbs-up"
+              scope.message-spin = false
+              scope.message = "imagem postada com sucesso!"
+              scope.url = "https://fb.com/#{response.id}"
+              console.log response
+          );
+          console.log(res)
+        )
+
+      scope.add-me = ->
+        # DAT URI
+        path = encode-URI-component "/#{$root-scope.user.id}/picture?width=128"
+        fabric.Image.fromURL "/facebook-proxy?path=#{path}", (o-img) !->
+          cool-group = new fabric.Group [] {
+            left: canvas.width - 128
+            top: (canvas.height - 64) / 2
+            width: 128
+            height: 128
+            origin-x: \center
+            origin-y: \center
+          }
+
+          anti-crisp-circle = new fabric.Circle {
+            stroke-width: 2,
+            stroke: 'white'
+            left: 0
+            top: 0
+            radius: 64
+            fill: \transparent
+            origin-x: \center
+            origin-y: \center
+          }
+
+          o-img
+            ..left     = 0
+            ..top      = 0
+            ..origin-x = \center
+            ..origin-y = \center
+            ..clip-to  = (ctx) -> 
+              ctx.arc 0 0 64 0 2 * Math.PI
+            ..scale 1
+
+          cool-group.add o-img, anti-crisp-circle
+          canvas.add cool-group
+          canvas.render-all!
 
   }
 
