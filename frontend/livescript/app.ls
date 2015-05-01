@@ -35,6 +35,11 @@ app.config [\$routeProvider, ($route-provider) ->
     controller: \IndexController,
     auth: user-is-ok
   }
+  .when "/:test", {
+    template-url: "/templates/index.html",
+    controller: \IndexController,
+    auth: user-is-ok
+  }
   .otherwise(
     redirectTo: "/"
   )
@@ -68,7 +73,7 @@ app.run [
         location.reload!
     
     $root-scope.$on \$routeChangeStart (event, next, current) !->
-      $root-scope.layout-type = "hermes-panel"
+      ga 'send', 'pageview', location.href.replace("#{location.protocol}//#{location.host}", '')
       # looks like gambiarra
       # I agree (note by 'Celão)
       if next.$$route.auth
