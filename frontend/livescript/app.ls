@@ -82,3 +82,4 @@ app.controller \TopchatImageController require "./controllers/topchat/image.ls"
 app.controller \TopchatController require "./controllers/topchat.ls"
 
 app.directive \topchat require "./directives/topchat.ls"
+app.directive \adsense require "./directives/adsense.ls"
