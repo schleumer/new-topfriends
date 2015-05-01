@@ -25,7 +25,12 @@ store = (buffer, callback) ->
     ACL:'public-read'
     ContentType: 'image/png'
   }
+  console.log 'storing object %s in bucket' filename
   eita = s3.put-object(params, (err, res) ->
+    if not err
+      console.log 'object %s stored in bucket' filename
+    else
+      console.log 'object %s was not stored in bucket' filename
     url = s3.getSignedUrl 'putObject', params.{Key, Bucket}
     callback(err, url.replace(/\?.*/, ''))
   )
@@ -59,12 +64,14 @@ app.use express.static public-dir
 app.get "/" (req, res) -> res.redirect \index.html
 
 app.get "/facebook-proxy" (req, res) ->
+  console.log "/facebook-proxy proxy'd %s" req.query.path
   # TODO: WTF???
   request
     .get("http://graph.facebook.com#{req.query.path}")
     .pipe(res)
 
 app.post "/base64-proxy" (req, res) ->
+  console.log '/base64-proxy accessed'
   buffer = new Buffer(req.body.image.replace(/^data:(.*?);base64,/,''), 'base64')
   store buffer, (err, url) ->
     if err
@@ -91,6 +98,9 @@ app.post "/do" (req, res) ->
 app.get "/get" (req, res) ->
   #res.send require "./test.json"
   res.send req.session.{data, next}
+
+app.use (req,res) ->
+    res.redirect('/index.html')
 
 server = app.listen (process.env['PORT'] or 3000), ->
   host = server.address!address
