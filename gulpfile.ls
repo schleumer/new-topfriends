@@ -21,6 +21,7 @@ notify = require 'gulp-notify'
 changed = require 'gulp-changed'
 insert = require 'gulp-insert'
 replace = require 'gulp-replace'
+closure-compiler = require 'gulp-closure-compiler'
 
 root = './public/'
 
@@ -63,6 +64,17 @@ gulp.task 'prepend-ls', ['ls'], ->
   gulp.src(path.join(root, 'js/app.js'))
     .pipe(insert.prepend(fs.readFileSync('./frontend/helpers/app.js.banner').toString().replace(/\%version\%/g, (new Date()).getTime())))
     .pipe(gulp.dest(path.join(root, 'js')))
+
+gulp.task 'closure-compiler', ['ls', 'prepend-ls'], ->
+  gulp.src('./public/js/app.js')
+    .pipe(closure-compiler({
+      compilerPath: './node_modules/closurecompiler/compiler/compiler.jar',
+      fileName: './public/js/app.gcc.js',
+      compilerFlags: {
+        language_in: 'ECMASCRIPT5_STRICT'
+      }
+    }))
+    .pipe(gulp.dest('dist'))
 
 gulp.task 'templates', ->
   locals = {
@@ -122,4 +134,16 @@ gulp.task 'default', [
   'copy-icons'
   'copy-images'
   'images-watch'
+]
+
+gulp.task 'prod', [
+  'ls'
+  'prepend-ls'
+  'closure-compiler',
+  'stylesheet'
+  #'stylesheet-uglify'
+  #'prod-templates'
+  'copy-fonts'
+  'copy-icons'
+  'copy-images'
 ]

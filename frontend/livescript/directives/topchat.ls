@@ -133,10 +133,7 @@ module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout'
           origin-x: \center
         }
 
-        text.has-controls = no
-        text-counter.has-controls = no
         group.has-controls = no
-
 
         path = encode-URI-component "/#{thread.target.fbid}/picture?width=64&height=64"
         fabric.Image.fromURL "/facebook-proxy?path=#{path}", (o-img) !->
