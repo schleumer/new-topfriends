@@ -38,7 +38,7 @@ app = express!
 public-dir = path.join __dirname \.. \public
 generated-files-dir = path.join public-dir \generated-files
 
-Unit (x) -> { run: x! }
+Unit = (x) -> { run: x! }
 
 allow-cors = (req, res, next) ->
   [ <[ Access-Control-Allow-Origin * ]>
