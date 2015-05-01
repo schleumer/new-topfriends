@@ -89,8 +89,13 @@ app.post "/base64-proxy" (req, res) ->
   #res.send { image: null }
 
 app.post "/do" (req, res) ->
+  try
+    data = req.body.data |> JSON.parse
+  catch ex
+    data = []
+    console.log ex, req.body.data
   req.session <<< {
-    data: req.body.data |> JSON.parse
+    data: data
     next: "/topchat"
   }
   res.redirect "/"
