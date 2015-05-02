@@ -1,5 +1,5 @@
 # Collaborators
 
-[@schleumer](https://github.com/haskellcamargo)
+[@schleumer](https://github.com/schleumer)
 
 [@haskellcamargo](https://github.com/haskellcamargo)
