@@ -35,8 +35,8 @@ store = (buffer, callback) ->
 
 app = express!
 
-public-dir = path.join __dirname \.. \public
-generated-files-dir = path.join public-dir \generated-files
+public-dir = path.join __dirname, \.. \public
+generated-files-dir = path.join public-dir, \generated-files
 
 Unit = (x) -> { run: x! }
 
@@ -44,7 +44,9 @@ allow-cors = (req, res, next) ->
   [ <[ Access-Control-Allow-Origin * ]>
     <[ Access-Control-Allow-Methods GET,PUT,POST,DELETE ]>
     <[ Access-Control-Allow-Headers Content-Type ]> ]
-  |> each (pair) -> res.header (first pair) (last pair)
+  |> each (pair) ->
+    # return res.header(first(pair)(last(pair)));
+    res.header (first pair), (last pair)
   Unit next .run
 
 app.use body-parser.json limit: \50mb
@@ -88,20 +90,26 @@ app.post "/base64-proxy" (req, res) ->
   #res.send { image: null }
 
 app.post "/do" (req, res) ->
+  console.log 'session pushed'
+  try
+    data = req.body.data |> JSON.parse
+  catch ex
+    data = []
+    console.log ex, req.body.data
   req.session <<< {
-    data: req.body.data |> JSON.parse
-    next: "/topchat"
+    data: data
+    next: '/topchat'
   }
-  res.redirect "/"
+  res.redirect '/'
 
-app.get "/get" (req, res) ->
-  #res.send require "./test.json"
+app.get '/get' (req, res) ->
+  console.log 'session requested'
   res.send req.session.{data, next}
 
 app.use (req,res) ->
-    res.redirect('/index.html')
+  res.redirect '/index.html'
 
 server = app.listen (process.env['PORT'] or 3000), ->
   host = server.address!address
   port = server.address!port
-  console.log 'Example app listening at http://%s:%s' host, port
+  console.log 'listening at http://%s:%s' host, port

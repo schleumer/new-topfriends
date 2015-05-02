@@ -45,18 +45,37 @@ app.config [\$routeProvider, ($route-provider) ->
   )
 ]
 
-app.filter \plural ->
+app.filter \plural [\$rootScope, ($root-scope) ->
   (input, args) ->
-    sprintf (if input > 1 then last args else first args), (numeral input .format \"0a")
+    sprintf (if input > 1 then last args else first args),
+      (if $root-scope.short-numbers then numeral input .format \"0a" else input)
+]
 
 app.service \topchatThreads ->
   threads = []
   get: -> threads
   set: (t, max-friends = 10) -> threads := t |> take (max-friends)
 
+# SHEEEEEEEEEEIT
+# 😸😸😸😸😸😂😂😂😂😂👏👏👏👏👏👏👌👌👌👌
+parse-bool = (str) ->
+  str is 'true'
+
 app.run [
-  \$rootScope \localStorageService \$location, 
-  ($root-scope, local-storage, $location) ->
+  \$rootScope \localStorageService \$location \$route \$timeout, 
+  ($root-scope, local-storage, $location, $route, $timeout) ->
+    if (local-storage.get \short-numbers) is null
+      $root-scope.short-numbers = true
+      local-storage.set \short-numbers $root-scope.short-numbers
+    else
+      $root-scope.short-numbers = parse-bool local-storage.get \short-numbers
+
+    $root-scope.toggle-short-numbers = ->
+      $root-scope.short-numbers = !$root-scope.short-numbers
+      local-storage.set \short-numbers $root-scope.short-numbers
+      # wait switcher's animation ends :D
+      $timeout (-> $route.reload!), 400
+
     $root-scope.facebookLoaded = window.__facebookLoaded
   
     $root-scope.user = null

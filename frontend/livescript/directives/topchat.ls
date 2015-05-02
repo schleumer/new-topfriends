@@ -7,8 +7,8 @@ require! \numeral
 
 { TimeMachine } = require '../utils/time-machine.ls'
 
-module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout'
-($location, $route, $root-scope, $http, $timeout) ->
+module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout', '$filter'
+($location, $route, $root-scope, $http, $timeout, $filter) ->
   return {
     template-url: 'templates/directives/topchat.html',
     scope: {
@@ -117,10 +117,12 @@ module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout'
           origin-y: \center
         }
 
-        text-counter = numeral thread.message_count
-          .format(\0a) ++ " " ++ do ->
-            | thread.message_count < 2 => \mensagem
-            | otherwise                => \mensagens
+        #text-counter = numeral thread.message_count
+        #  .format(\0a) ++ " " ++ do ->
+        #    | thread.message_count < 2 => \mensagem
+        #    | otherwise                => \mensagens
+
+        text-counter = $filter('plural')(thread.message_count, ['%s mensagem', '%s mensagens'])
 
         counter = new fabric.Text text-counter, {
           left: 0

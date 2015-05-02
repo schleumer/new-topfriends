@@ -79,6 +79,7 @@ gulp.task 'closure-compiler', ['ls', 'prepend-ls'], ->
 gulp.task 'templates', ->
   locals = {
     DEV: if process.env["DEV"] then true else false
+    version: new Date().get-time!
   }
 
   jadeTask = jade {locals: locals, pretty: true}
