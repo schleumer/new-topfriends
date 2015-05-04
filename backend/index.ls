@@ -28,8 +28,7 @@ store = (buffer, callback) ->
 
     console.log 'storing object %s in bucket' filename
 
-    # WTF is eita?
-    eita = s3.put-object params, (err, res) ->
+    s3.put-object params, (err, res) ->
       console.log "object %s #{'was not ' if err}stored in bucket" filename
       callback (s3.get-signed-url \putObject params.{Key, Bucket}) - /\?.*/
 
@@ -75,11 +74,13 @@ app.get "/facebook-proxy" (req, res) ->
 app.post "/base64-proxy" (req, res) ->
   console.log '/base64-proxy accessed'
   buffer = new Buffer req.body.image - /^data:(.*?);base64,/, \base64
-  store buffer, (err, url) ->
-    | err => do ~>
-      console.log err
-      res.send-status 500
-    | _   => res.send url
+  #store buffer, (err, url) ->
+  #  | err => do ~>
+  #    console.log err
+  #    res.send-status 500
+  #  | _   => res.send url
+  store buffer, (url) ->
+    res.send url
     
   #target-file = 'image.jpg'
   #target-path = path.join generated-files-dir, target-file
