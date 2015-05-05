@@ -212,21 +212,23 @@ module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout', '$fi
         $http.post '/base64-proxy', {
           image: canvas.to-data-URL!
         } .then((res) ->
-          scope.url = null
-          scope.message-class = "fa-spinner"
-          scope.message-spin = true
-          scope.message = "enviando a imagem para o Facebook :D"
-          FB.api('/photos', 'post', {
-            url: res.data
-          }, (response) ->
-            scope.$apply ->
-              scope.message-class = "fa-thumbs-up"
-              scope.message-spin = false
-              scope.message = "imagem postada com sucesso!"
-              scope.url = "https://fb.com/#{response.id}"
-              console.log response
-          );
-          console.log(res)
+          scope.image-url = res.data
+          scope.type = "emergency"
+          scope.message = null
+          #scope.url = null
+          #scope.message-class = "fa-spinner"
+          #scope.message-spin = true
+          #scope.message = "enviando a imagem para o Facebook :D"
+          #FB.api('/photos', 'post', {
+          #  url: res.data
+          #}, (response) ->
+          #  scope.$apply ->
+          #    scope.message-class = "fa-thumbs-up"
+          #    scope.message-spin = false
+          #    scope.message = "imagem postada com sucesso!"
+          #    scope.url = "https://fb.com/#{response.id}"
+          #    console.log response
+          #);
         )
 
       scope.add-me = ->

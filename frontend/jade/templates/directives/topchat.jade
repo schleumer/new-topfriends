@@ -1,4 +1,4 @@
-div(ng-show="!message")
+div(ng-show="!message && !type")
   div(style='margin-top:20px;margin-bottom:40px;text-align:center')
     button.q-button.q-button-primary.button-large(ng-click='share()')
       i.fa.fa-send.spaced
@@ -34,12 +34,24 @@ div(ng-show="!message")
   
     div.topchat-container
       canvas.the-canvas
+
+div(ng-if="type == 'emergency'", style="margin-top: 50px;text-align:center;")
+  div(style="margin-top: 20px;display: inline-block;")
+    a.q-button.q-button-primary.button-large(ng-href="{{imageUrl}}", target="_blank") 
+      i.fa.fa-facebook-square.spaced
+      | ver a imagem
+    button.q-button.button-large(ng-click='back()')
+      i.fa.fa-arrow-left.spaced
+      | voltar
+    img(ng-src="{{imageUrl}}")
+
 div(ng-show="message", style="margin-top: 100px;")
   div(style="text-align: center;")
     i.fa.fa-spin.element-animation(ng-if="messageSpin", ng-class="messageClass", style="font-size:40px;")
     i.fa(ng-if="!messageSpin", ng-class="messageClass", style="font-size:40px;")
 
     h3 {{ message }}
+
     span(ng-if="url", style="margin-top: 20px;display: inline-block;")
       a.q-button.q-button-primary.button-large(ng-href="{{url}}", target="_blank") 
         i.fa.fa-facebook-square.spaced
