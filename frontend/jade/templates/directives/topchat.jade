@@ -3,6 +3,9 @@ div(ng-show="!message && !type")
     button.q-button.q-button-primary.button-large(ng-click='share()')
       i.fa.fa-send.spaced
       | compartilhar
+    button.q-button.q-button-primary.button-large(ng-click='open()')
+      i.fa.fa-eye.spaced
+      | visualizar
     button.q-button.button-large(ng-click='back()')
       i.fa.fa-arrow-left.spaced
       | voltar
@@ -37,6 +40,7 @@ div(ng-show="!message && !type")
 
 div(ng-if="type == 'emergency'", style="margin-top: 50px;text-align:center;")
   div(style="margin-top: 20px;display: inline-block;")
+    div.faded(style="margin-bottom:20px;") no momento o compartilhamento de imagem está quebrado, sugerimos salvar a imagem por enquanto :/
     a.q-button.q-button-primary.button-large(ng-href="{{imageUrl}}", target="_blank") 
       i.fa.fa-facebook-square.spaced
       | ver a imagem

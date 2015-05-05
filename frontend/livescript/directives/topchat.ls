@@ -231,6 +231,12 @@ module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout', '$fi
           #);
         )
 
+      scope.open = !->
+        canvas.deactivateAll!renderAll!
+        url = canvas.to-data-URL!
+        window.open(url)
+
+
       scope.add-me = ->
         # DAT URI
         path = encode-URI-component "/#{$root-scope.user.id}/picture?width=128"
