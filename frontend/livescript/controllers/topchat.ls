@@ -1,8 +1,8 @@
 { each, filter, first, sort, sort-by, reverse, last, map, flatten, count-by, obj-to-pairs, sort-by } = require 'prelude-ls'
 
 module.exports = [
-  '$scope', '$rootScope', '$location', '$http', 'topchatThreads',
-  ($scope, $root-scope, $location, $http, topchat-threads) ->
+  '$scope', '$rootScope', '$location', '$http', '$route', 'topchatThreads'
+  ($scope, $root-scope, $location, $http, $route, topchat-threads) ->
     $scope.message = null
     $scope.deleted-threads = []
     $scope.max-friends = 15

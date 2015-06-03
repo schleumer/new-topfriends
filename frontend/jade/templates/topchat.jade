@@ -19,6 +19,11 @@ div(ng-if="fatalError")
         option(value="15") 15 amigos
         option(value="20") 20 amigos
         option(value="25") 25 amigos
+    label(style="display:inline-block;vertical-align:middle")
+      span(style="display:inline-block;vertical-align:middle;margin-left:5px;") encurtar numeros
+      input.q-switch.green.bigswitch(type='checkbox', ng-model="shortNumbers", ng-change="toggleShortNumbers()")
+      div
+        div
     .clearfix
   div
     .q-u-lg-1-4.q-u-md-1-3.q-u-sm-1-2.user-box(ng-repeat="thread in threads | orderBy:'-message_count'", ng-click="remove(thread)")

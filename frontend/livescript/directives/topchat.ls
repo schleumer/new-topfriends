@@ -7,8 +7,8 @@ require! \numeral
 
 { TimeMachine } = require '../utils/time-machine.ls'
 
-module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout'
-($location, $route, $root-scope, $http, $timeout) ->
+module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout', '$filter'
+($location, $route, $root-scope, $http, $timeout, $filter) ->
   return {
     template-url: 'templates/directives/topchat.html',
     scope: {
@@ -117,10 +117,12 @@ module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout'
           origin-y: \center
         }
 
-        text-counter = numeral thread.message_count
-          .format(\0a) ++ " " ++ do ->
-            | thread.message_count < 2 => \mensagem
-            | otherwise                => \mensagens
+        #text-counter = numeral thread.message_count
+        #  .format(\0a) ++ " " ++ do ->
+        #    | thread.message_count < 2 => \mensagem
+        #    | otherwise                => \mensagens
+
+        text-counter = $filter('plural')(thread.message_count, ['%s mensagem', '%s mensagens'])
 
         counter = new fabric.Text text-counter, {
           left: 0
@@ -210,22 +212,30 @@ module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout'
         $http.post '/base64-proxy', {
           image: canvas.to-data-URL!
         } .then((res) ->
-          scope.url = null
-          scope.message-class = "fa-spinner"
-          scope.message-spin = true
-          scope.message = "enviando a imagem para o Facebook :D"
-          FB.api('/photos', 'post', {
-            url: res.data
-          }, (response) ->
-            scope.$apply ->
-              scope.message-class = "fa-thumbs-up"
-              scope.message-spin = false
-              scope.message = "imagem postada com sucesso!"
-              scope.url = "https://fb.com/#{response.id}"
-              console.log response
-          );
-          console.log(res)
+          scope.image-url = res.data
+          scope.type = "emergency"
+          scope.message = null
+          #scope.url = null
+          #scope.message-class = "fa-spinner"
+          #scope.message-spin = true
+          #scope.message = "enviando a imagem para o Facebook :D"
+          #FB.api('/photos', 'post', {
+          #  url: res.data
+          #}, (response) ->
+          #  scope.$apply ->
+          #    scope.message-class = "fa-thumbs-up"
+          #    scope.message-spin = false
+          #    scope.message = "imagem postada com sucesso!"
+          #    scope.url = "https://fb.com/#{response.id}"
+          #    console.log response
+          #);
         )
+
+      scope.open = !->
+        canvas.deactivateAll!renderAll!
+        url = canvas.to-data-URL!
+        window.open(url)
+
 
       scope.add-me = ->
         # DAT URI
