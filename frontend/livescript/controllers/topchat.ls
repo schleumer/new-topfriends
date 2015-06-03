@@ -1,4 +1,4 @@
-{ each, filter, first, sort, sort-by, reverse, last } = require 'prelude-ls'
+{ each, filter, first, sort, sort-by, reverse, last, map, flatten, count-by, obj-to-pairs, sort-by } = require 'prelude-ls'
 
 module.exports = [
   '$scope', '$rootScope', '$location', '$http', 'topchatThreads',
@@ -11,12 +11,25 @@ module.exports = [
       $scope.message = 'Você precisa utilizar a extensão antes'
     else
       $scope.data = $root-scope.route-data['/topchat']
-      
-      $scope.threads = $scope.data 
-        |> each (->
-          it.target = it.real-participants 
-            |> filter (.fbid.to-string! != $root-scope.user.id.to-string!) 
-            |> first)
+      if $scope.data.length < 3
+        $scope.data = null
+        $scope.fatalError = 'Você precisa no minimo ter 3 conversas :('
+      else
+        $scope.me = $scope.data 
+          |> map (.real-participants) 
+          |> flatten 
+          |> count-by (.fbid)
+          |> obj-to-pairs
+          |> sort-by (.1)
+          |> reverse
+          |> first
+          |> first
+
+        $scope.threads = $scope.data 
+          |> each (->
+            it.target = it.real-participants 
+              |> filter (.fbid.to-string! != $scope.me) 
+              |> first)
 
 
     $scope.remove = (thread) ->

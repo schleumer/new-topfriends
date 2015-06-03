@@ -2,7 +2,13 @@ div(ng-show="message")
   div.alert.alert-warning
     h2 {{ message }}
 
-#topchat
+div(ng-if="fatalError")
+  div.alert.alert-error.text-center
+    h2 {{ fatalError }}
+
+
+
+#topchat(ng-if="!fatalError")
   div.topchat-topbar(style="margin-top:20px;margin-bottom:40px;text-align:center")
     button.q-button.q-button-primary.button-large(ng-click="do()")
       i.fa.fa-bolt.spaced
@@ -20,7 +26,7 @@ div(ng-show="message")
         .image
           div.delete-thread
             i.fa.fa-trash
-          img.rounded-pic(ng-src="{{'//graph.facebook.com/' + thread.target.fbid + '/picture'}}")
+          img.rounded-pic(ng-src="{{'//graph.facebook.com/' + thread.target.fbid + '/picture'}}", width="50")
         .infos
           .name
             | {{ thread.target.name }}
@@ -45,5 +51,5 @@ div(ng-show="message")
         .clearfix
 
 
-.alert.alert-primary.faded(style="margin-top:40px;")
-  p você pode remover os amigos da lista clicando neles
+  .alert.alert-primary.faded(style="margin-top:40px;")
+    p você pode remover os amigos da lista clicando neles
