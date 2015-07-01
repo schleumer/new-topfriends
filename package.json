@@ -30,6 +30,7 @@
     "numeral": "^1.5.3",
     "prelude": "^0.1.8",
     "prelude-ls": "^1.1.1",
+    "prerender": "^3.17.0",
     "request": "^2.55.0",
     "sprintf-js": "^1.0.2"
   },

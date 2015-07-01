@@ -76,6 +76,11 @@ gulp.task 'closure-compiler', ['ls', 'prepend-ls'], ->
     }))
     .pipe(gulp.dest('dist'))
 
+gulp.task 'uglify', ['ls', 'prepend-ls'], ->
+  gulp.src './public/js/app.js'
+    .pipe uglify!
+    .pipe gulp.dest './public/js/'
+
 gulp.task 'templates', ->
   locals = {
     DEV: if process.env["DEV"] then true else false
@@ -97,6 +102,8 @@ gulp.task 'stylesheet', ->
     .pipe(less({paths: [path.join root, 'components']}))
     .pipe(gulp.dest(path.join(root, 'css')))
     .pipe(notify(message: "LESS compiled!", on-last: true))
+
+
 
 # Watch stuffs
 
@@ -140,11 +147,12 @@ gulp.task 'default', [
 gulp.task 'prod', [
   'ls'
   'prepend-ls'
-  'closure-compiler',
+  #'closure-compiler',
   'stylesheet'
   #'stylesheet-uglify'
   #'prod-templates'
   'copy-fonts'
   'copy-icons'
   'copy-images'
+  'uglify'
 ]

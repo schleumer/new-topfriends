@@ -3,6 +3,9 @@
     "name"               : "topfriends",
     "script"             : "index.js",
     "cwd"                : ".",
-    "node_args"          : "--harmony"
+    "node_args"          : "--harmony",
+    "env": {
+	    "PORT": "3666"
+    }
   }]
 }
