@@ -25,7 +25,7 @@
 		},
 		{
 			"name": "Extension",
-			"path": "chrome-extension/src"
+			"path": "chrome-extension\\src"
 		}
 	]
 }
