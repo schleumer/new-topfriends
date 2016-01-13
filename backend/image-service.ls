@@ -153,8 +153,12 @@ class MonkeyPatchLang
 
 app.get '/upa' (req, res) ->
   drawer.render './image-templates/default.jade'
-    .then ([x, file-path]) -> 
-      queue.add (capture 'file://' + file-path, x)
+    .then ([x, file-path]) ->
+      is-win = /^win/.test process.platform
+      if is-win
+        queue.add (capture 'file:///' + file-path, x)
+      else
+        queue.add (capture 'file://' + file-path, x)
     .then (code) ->
       res.send code.to-string!
 
@@ -170,7 +174,11 @@ app.post "/v1" (req, res) ->
     width: (12 / columnSize) * 280
   }
     .then ([x, file-path]) -> 
-      queue.add (capture 'file://' + file-path, x)
+      is-win = /^win/.test process.platform
+      if is-win
+        queue.add (capture 'file:///' + file-path, x)
+      else
+        queue.add (capture 'file://' + file-path, x)
     .then (code) ->
       console.log "image generated"
       res.send "upa lele #{code}"
