@@ -157,28 +157,13 @@ class MonkeyPatchLang
     return none if number < 1
 
 
-app.get '/upa' (req, res) ->
-  drawer.render './image-templates/default.jade'
-    .then ([x, file-path]) ->
-      is-win = /^win/.test process.platform
-      image-path = path.join __dirname, '..', 'image-cache', x + '.png'
-      if is-win
-        queue.add (capture 'file:///' + file-path, image-path)
-      else
-        queue.add (capture 'file://' + file-path, image-path)
-    .then (code) ->
-      res.send code.to-string!
-
 app.post "/v1" (req, res) ->
   console.log("image requested")
-  console.log(req.query.lang)
 
   locale = req.query.lang || "pt"
 
   if not langs[locale]
     locale = "en"
-
-  console.log locale
 
   lang = new MonkeyPatchLang(locale)
 
@@ -197,11 +182,12 @@ app.post "/v1" (req, res) ->
   if Array.is-array friends
     friends = friends.slice 0, max-friends
   else
+    console.log 'some **** happened'
     res.send 500
     return
 
 
-  drawer.render './image-templates/default.jade', { 
+  drawer.render (path.join __dirname, './image-templates/default.jade'), { 
     data: friends,
     str: lang.get.bind(lang),
     plural: lang.getPlural.bind(lang),

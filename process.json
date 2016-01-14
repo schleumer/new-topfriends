@@ -7,5 +7,13 @@
     "env": {
 	    "PORT": "3666"
     }
+  },{
+    "name"               : "topfriends-image-service",
+    "script"             : "image-service.js",
+    "cwd"                : ".",
+    "node_args"          : "--harmony",
+    "env": {
+      "PORT": "3667"
+    }
   }]
 }
