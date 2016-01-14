@@ -19,9 +19,11 @@ html(style="width: #{width}px")
                 tbody
                   tr
                     td.thread-user-image(style="background-image: url(#{thread.OtherUser.ImageUrl})")
+                    //td.thread-user-image(style="background-image: url(http://lorempixel.com/200/200/cats/?lel=#{index})")
                     td.thread-user-info
                       div.thread-user-name
                         span #{thread.OtherUser.Name}
+                        //span #{"Gatinho(a) #" + (index + 1)}
                       div.thread-user-counter
                         span !{plural(thread.MessageCount, "message_counter")}
       .row

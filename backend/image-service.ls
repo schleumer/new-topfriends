@@ -24,10 +24,10 @@ rand = ->
     resolve(buf.toString('hex'))
   );
 
-capture = (url) ->
+capture = (url, output) ->
   ->
     (resolve, reject) <-! new Promise!
-    execution = spawn("phantomjs", ['--disk-cache=true', (path.join __dirname, 'rasterize.js'), url, 'lmao.png'])
+    execution = spawn("phantomjs", ['--disk-cache=true', (path.join __dirname, 'rasterize.js'), url, output])
     
     # execution.stdout.on('data', (data) ->
     #   console.log('stdout: ' + data)
@@ -38,7 +38,7 @@ capture = (url) ->
     # )
     
     execution.on 'exit', (code) ->
-      resolve code if code === 0
+      resolve output if code === 0
       reject code if code !== 0
 
 maxConcurrent = 3
@@ -54,7 +54,8 @@ AWS = require \aws-sdk
 s3 = new AWS.S3 compute-checksums: true
 s3.create-bucket Bucket: \schleumer-topfriends
 
-store = (buffer, callback) ->
+store = (buffer) ->
+  (resolve, reject) <- new Promise!
   let hash = crypto.create-hash \sha512
     hash.update buffer
     filename = (hash.digest \hex) + \.png
@@ -68,8 +69,8 @@ store = (buffer, callback) ->
     console.log 'storing object %s in bucket' filename
 
     s3.put-object params, (err, res) ->
-      console.log "object %s #{'was not ' if err}stored in bucket" filename
-      callback (s3.get-signed-url \putObject params.{Key, Bucket}) - /\?.*/
+      console.log "object %s #{if err then 'was not ' else ''}stored in bucket" filename
+      resolve (s3.get-signed-url \putObject params.{Key, Bucket}) - /\?.*/
 
 app = express!
 
@@ -155,35 +156,58 @@ app.get '/upa' (req, res) ->
   drawer.render './image-templates/default.jade'
     .then ([x, file-path]) ->
       is-win = /^win/.test process.platform
+      image-path = path.join __dirname, '..', 'image-cache', x + '.png'
       if is-win
-        queue.add (capture 'file:///' + file-path, x)
+        queue.add (capture 'file:///' + file-path, image-path)
       else
-        queue.add (capture 'file://' + file-path, x)
+        queue.add (capture 'file://' + file-path, image-path)
     .then (code) ->
       res.send code.to-string!
 
 app.post "/v1" (req, res) ->
+  console.log("image requested")
   lang = new MonkeyPatchLang(req.query.lang || "pt-br")
-  columnSize = req.query.columnSize || 6
+  column-size = (req.query.column-size || 6).to-string!
+  max-friends = (req.query.max-friends || 10).to-string!
+
+  if (["6", "4", "3"].index-of column-size) < 0
+    column-size = "6"
+
+  if (["25", "20", "15", "10", "5"].index-of max-friends) < 0
+    max-friends = "10"
+
+  max-friends = parse-int max-friends
+  friends = req.body
+
+  if Array.is-array friends
+    friends = friends.slice 0, max-friends
+  else
+    res.send 500
+    return
+
 
   drawer.render './image-templates/default.jade', { 
-    data: req.body,
+    data: friends,
     str: lang.get.bind(lang),
     plural: lang.getPlural.bind(lang),
-    columnSize: columnSize
-    width: (12 / columnSize) * 280
+    column-size: column-size
+    width: (12 / column-size) * 280
   }
     .then ([x, file-path]) -> 
       is-win = /^win/.test process.platform
+      image-path = path.join __dirname, '..', 'image-cache', x + '.png'
       if is-win
-        queue.add (capture 'file:///' + file-path, x)
+        queue.add (capture 'file:///' + file-path, image-path)
       else
-        queue.add (capture 'file://' + file-path, x)
-    .then (code) ->
+        queue.add (capture 'file://' + file-path, image-path)
+    .then (output-path) ->
+      store (fs.read-file-sync output-path)
+    .then (image-url) ->
       console.log "image generated"
-      res.send "upa lele #{code}"
+      res.send image-url
 
 app.use (req,res) ->
+  console.log(req)
   res.redirect '/'
 
 server = app.listen (process.env['PORT'] or 3000), ->
