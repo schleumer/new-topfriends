@@ -133,10 +133,15 @@ class Drawer
 drawer = new Drawer
 
 langs = {
-  "pt-br": {
+  "pt": {
     "header": "Esses são os amigos com quem mais converso",
     "message_counter": ["<b>%s</b> %s", ["mensagem", "mensagens"], "nenhuma mensagem"],
     "footer": "Faça o seu também! Acesse: <a href=\"javascript:;\">topfriends.biz</a> ou <a href=\"javascript:;\">topamig.us</a>."
+  },
+  "en": {
+    "header": "These are the friends who I talk most",
+    "message_counter": ["<b>%s</b> %s", ["message", "messages"], "no messages"],
+    "footer": "Make you top too! Go: <a href=\"javascript:;\">topfriends.biz</a> or <a href=\"javascript:;\">topamig.us</a>."
   }
 }
 class MonkeyPatchLang
@@ -166,7 +171,17 @@ app.get '/upa' (req, res) ->
 
 app.post "/v1" (req, res) ->
   console.log("image requested")
-  lang = new MonkeyPatchLang(req.query.lang || "pt-br")
+  console.log(req.query.lang)
+
+  locale = req.query.lang || "pt"
+
+  if not langs[locale]
+    locale = "en"
+
+  console.log locale
+
+  lang = new MonkeyPatchLang(locale)
+
   column-size = (req.query.column-size || 6).to-string!
   max-friends = (req.query.max-friends || 10).to-string!
 
