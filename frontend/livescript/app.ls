@@ -35,6 +35,10 @@ app.config [\$routeProvider, ($route-provider) ->
     controller: \IndexController,
     auth: user-is-ok
   }
+  .when "/privacy", {
+    template-url: "/templates/privacy.html",
+    controller: \PrivacyController
+  }
   .when "/:test", {
     template-url: "/templates/index.html",
     controller: \IndexController,
@@ -104,6 +108,7 @@ app.controller \IndexController require "./controllers/index.ls"
 app.controller \AuthenticationController require "./controllers/authentication.ls"
 app.controller \TopchatImageController require "./controllers/topchat/image.ls"
 app.controller \TopchatController require "./controllers/topchat.ls"
+app.controller \PrivacyController require "./controllers/privacy.ls"
 
 app.directive \topchat require "./directives/topchat.ls"
 app.directive \adsense require "./directives/adsense.ls"

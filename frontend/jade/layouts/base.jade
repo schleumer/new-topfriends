@@ -8,8 +8,8 @@ html(ng-app="TopFriends")
     title top friends
   body
     .content
-      .alert.alert-primary
-        | Mudamos de cara, no momento nosso aplicativo só irá suportar o Top Chat, em breve traremos os outros de volta ;)
+      //.alert.alert-primary
+      //  | Mudamos de cara, no momento nosso aplicativo só irá suportar o Top Chat, em breve traremos os outros de volta ;)
       nav#top-bar
         div.pull-left.q-menu.q-menu-horizontal(style="width:auto")
           a.q-menu-heading.q-menu-link(href="#/")
@@ -27,6 +27,12 @@ html(ng-app="TopFriends")
             button.q-button.button-error.button-xsmall(ng-click="deleteUser()")
               i.fa.fa-trash.spaced
               | DELETE
+      .clearfix
+      .alert.alert-primary
+        b
+          | Agora estamos no Android!!! 
+          a.q-button(href="https://play.google.com/store/apps/details?id=li.ues.topfriends") clique aqui
+          |  para baixar o aplicativo
       .clearfix
       div
         adsense(client="ca-pub-1872221771266172")
