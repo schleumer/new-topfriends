@@ -12,8 +12,9 @@ html(style="width: #{width}px")
         for thread, index in data
           div(class="col-xs-#{columnSize}")
             a.btn.btn-primary.thread-user(href="javascript:;")
-              svg.thread-number(xmlns="http://www.w3.org/2000/svg")
-                text(x="100%", y="50%", dy=".3em", text-anchor="end", xml:space="preserve") !{index + 1}
+              if showRanking
+                svg.thread-number(xmlns="http://www.w3.org/2000/svg")
+                  text(x="100%", y="50%", dy=".3em", text-anchor="end", xml:space="preserve") !{index + 1}
               // YEAH, TABLES, BITCH, TABLES!!!
               table.thread-user-table
                 tbody

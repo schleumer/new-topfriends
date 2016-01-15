@@ -169,6 +169,7 @@ app.post "/v1" (req, res) ->
 
   column-size = (req.query.column-size || 6).to-string!
   max-friends = (req.query.max-friends || 10).to-string!
+  show-ranking = (req.query.show-ranking || 1).toString!
 
   if (["6", "4", "3"].index-of column-size) < 0
     column-size = "6"
@@ -176,7 +177,11 @@ app.post "/v1" (req, res) ->
   if (["25", "20", "15", "10", "5"].index-of max-friends) < 0
     max-friends = "10"
 
+  if (["1", "0"].index-of show-ranking) < 0
+    show-ranking = "1"
+
   max-friends = parse-int max-friends
+  show-ranking = parse-int show-ranking
   friends = req.body
 
   if Array.is-array friends
@@ -191,7 +196,8 @@ app.post "/v1" (req, res) ->
     data: friends,
     str: lang.get.bind(lang),
     plural: lang.getPlural.bind(lang),
-    column-size: column-size
+    column-size
+    show-ranking
     width: (12 / column-size) * 280
   }
     .then ([x, file-path]) -> 
