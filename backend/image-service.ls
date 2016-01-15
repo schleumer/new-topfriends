@@ -141,7 +141,7 @@ langs = {
   "en": {
     "header": "These are the friends who I talk most",
     "message_counter": ["<b>%s</b> %s", ["message", "messages"], "no messages"],
-    "footer": "Make you top too! Go: <a href=\"javascript:;\">topfriends.biz</a> or <a href=\"javascript:;\">topamig.us</a>."
+    "footer": "Make your top too! Go: <a href=\"javascript:;\">topfriends.biz</a> or <a href=\"javascript:;\">topamig.us</a>."
   }
 }
 class MonkeyPatchLang
