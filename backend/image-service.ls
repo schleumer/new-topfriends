@@ -209,7 +209,7 @@ app.post "/v1" (req, res) ->
       else
         queue.add (capture 'file://' + file-path, image-path, me)
     .then (output-path) ->
-      store (fs.read-file-sync output-path, me)
+      store (fs.read-file-sync output-path), me
     .then (image-url) ->
       console.log "[%s] image generated", me
       res.send image-url
