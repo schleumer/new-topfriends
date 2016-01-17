@@ -20,11 +20,10 @@ get-style = (style) ->
 rand = ->
   (resolve, reject) <-! new Promise!
   crypto.randomBytes(48, (ex, buf) ->
-    console.log(buf.toString('hex'))
     resolve(buf.toString('hex'))
   );
 
-capture = (url, output) ->
+capture = (url, output, me) ->
   ->
     (resolve, reject) <-! new Promise!
     execution = spawn("phantomjs", ['--disk-cache=true', (path.join __dirname, 'rasterize.js'), url, output])
@@ -54,7 +53,7 @@ AWS = require \aws-sdk
 s3 = new AWS.S3 compute-checksums: true
 s3.create-bucket Bucket: \schleumer-topfriends
 
-store = (buffer) ->
+store = (buffer, me) ->
   (resolve, reject) <- new Promise!
   let hash = crypto.create-hash \sha512
     hash.update buffer
@@ -66,10 +65,10 @@ store = (buffer) ->
       ACL: \public-read
       ContentType: \image/png
 
-    console.log 'storing object %s in bucket' filename
+    console.log '[%s] storing object %s in bucket', me, filename
 
     s3.put-object params, (err, res) ->
-      console.log "object %s #{if err then 'was not ' else ''}stored in bucket" filename
+      console.log "[%s] object %s #{if err then 'was not ' else ''}stored in bucket", me, filename
       resolve (s3.get-signed-url \putObject params.{Key, Bucket}) - /\?.*/
 
 app = express!
@@ -158,7 +157,9 @@ class MonkeyPatchLang
 
 
 app.post "/v1" (req, res) ->
-  console.log("image requested")
+  me = (req.query.me || "ouch").toString!
+
+  console.log("[%s] image requested", me)
 
   locale = req.query.lang || "pt"
 
@@ -204,13 +205,13 @@ app.post "/v1" (req, res) ->
       is-win = /^win/.test process.platform
       image-path = path.join __dirname, '..', 'image-cache', x + '.png'
       if is-win
-        queue.add (capture 'file:///' + file-path, image-path)
+        queue.add (capture 'file:///' + file-path, image-path, me)
       else
-        queue.add (capture 'file://' + file-path, image-path)
+        queue.add (capture 'file://' + file-path, image-path, me)
     .then (output-path) ->
-      store (fs.read-file-sync output-path)
+      store (fs.read-file-sync output-path, me)
     .then (image-url) ->
-      console.log "image generated"
+      console.log "[%s] image generated", me
       res.send image-url
 
 app.use (req,res) ->
