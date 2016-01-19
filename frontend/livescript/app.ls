@@ -22,18 +22,15 @@ app.config [\$routeProvider, ($route-provider) ->
   }
   .when "/topchat", {
     template-url: "/templates/topchat.html",
-    controller: \TopchatController,
-    auth: user-is-ok
+    controller: \TopchatController
   }
   .when "/topchat/image", {
     template-url: "/templates/topchat-image.html",
-    controller: \TopchatImageController,
-    auth: user-is-ok
+    controller: \TopchatImageController
   }
   .when "/", {
     template-url: "/templates/index.html",
-    controller: \IndexController,
-    auth: user-is-ok
+    controller: \IndexController
   }
   .when "/privacy", {
     template-url: "/templates/privacy.html",
@@ -41,8 +38,7 @@ app.config [\$routeProvider, ($route-provider) ->
   }
   .when "/:test", {
     template-url: "/templates/index.html",
-    controller: \IndexController,
-    auth: user-is-ok
+    controller: \IndexController
   }
   .otherwise(
     redirectTo: "/"
@@ -56,9 +52,11 @@ app.filter \plural [\$rootScope, ($root-scope) ->
 ]
 
 app.service \topchatThreads ->
-  threads = []
-  get: -> threads
-  set: (t, max-friends = 10) -> threads := t |> take (max-friends)
+  items = []
+  me = null
+  get: -> { items, me }
+  set-items: (t, max-friends = 10) -> items := t |> take (max-friends)
+  set-me: (_) -> me := _
 
 # SHEEEEEEEEEEIT
 # 😸😸😸😸😸😂😂😂😂😂👏👏👏👏👏👏👌👌👌👌
@@ -80,20 +78,19 @@ app.run [
       # wait switcher's animation ends :D
       $timeout (-> $route.reload!), 400
 
-    $root-scope.facebookLoaded = window.__facebookLoaded
+    #$root-scope.facebookLoaded = window.__facebookLoaded
   
     $root-scope.user = null
     $root-scope.route-data = {}
   
-    window.__facebook-initiaded = ->
-      $root-scope.$apply ->
-        $root-scope.facebookLoaded = yes
+    #window.__facebook-initiaded = ->
+    #  $root-scope.$apply ->
+    #    $root-scope.facebookLoaded = yes
   
   
     $root-scope.deleteUser = ->
-      FB.api "/me/permissions" "delete" (x) -> 
-        local-storage.clear-all!
-        location.reload!
+      local-storage.clear-all!
+      location.reload!
     
     $root-scope.$on \$routeChangeStart (event, next, current) !->
       ga 'send', 'pageview', location.href.replace("#{location.protocol}//#{location.host}", '')

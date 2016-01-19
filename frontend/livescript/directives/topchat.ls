@@ -12,7 +12,8 @@ module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout', '$fi
   return {
     template-url: 'templates/directives/topchat.html',
     scope: {
-      'threads': '='
+      'threads': '=',
+      'me': '='
     },
     link: (scope, element) -> $timeout ->
       scope.brush-size = 1
@@ -238,8 +239,9 @@ module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout', '$fi
 
 
       scope.add-me = ->
+        console.log scope
         # DAT URI
-        path = encode-URI-component "/#{$root-scope.user.id}/picture?width=128"
+        path = encode-URI-component "/#{scope.me}/picture?width=128"
         fabric.Image.fromURL "/facebook-proxy?path=#{path}", (o-img) !->
           cool-group = new fabric.Group [] {
             left: canvas.width - 128

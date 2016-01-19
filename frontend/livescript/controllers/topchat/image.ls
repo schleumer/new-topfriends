@@ -4,6 +4,10 @@
 module.exports = [
   '$scope', '$rootScope', '$location', 'topchatThreads',
   ($scope, $root-scope, $location, topchat-threads) !->
-    $scope.threads = topchat-threads.get! |> sort-with (.message_count) |> reverse
+    threads = topchat-threads.get!
+
+    $scope.threads = threads.items |> sort-with (.message_count) |> reverse
+    $scope.me = threads.me
+
     $scope.back = !-> $location.path('/topchat')
 ]

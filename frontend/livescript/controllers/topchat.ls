@@ -1,4 +1,4 @@
-{ each, filter, first, sort, sort-by, reverse, last, map, flatten, count-by, obj-to-pairs, sort-by } = require 'prelude-ls'
+{ each, filter, first, sort, sort-by, reverse, last, map, flatten, count-by, obj-to-pairs, sort-by, unique } = require 'prelude-ls'
 
 module.exports = [
   '$scope', '$rootScope', '$location', '$http', '$route', 'topchatThreads'
@@ -8,22 +8,29 @@ module.exports = [
     $scope.max-friends = 15
 
     if not $root-scope.route-data['/topchat']
-      $scope.message = 'Você precisa utilizar a extensão antes'
+      #$scope.message = 'Você precisa utilizar a extensão antes'
+      $location.path("/")
     else
       $scope.data = $root-scope.route-data['/topchat']
       if $scope.data.length < 3
         $scope.data = null
         $scope.fatalError = 'Você precisa no minimo ter 3 conversas :('
       else
-        $scope.me = $scope.data 
-          |> map (.real-participants) 
-          |> flatten 
-          |> count-by (.fbid)
-          |> obj-to-pairs
-          |> sort-by (.1)
-          |> reverse
+        other-users = (
+          $scope.data
+          |> map (x) -> "fbid:#{x.other_user_fbid}"
+        )
+        
+        $scope.me = ((
+          $scope.data
+          |> map (.participants)
+          |> flatten
+          |> unique
+          |> filter (x) -> (other-users.index-of x) < 0
           |> first
-          |> first
+        ) / ":").1
+
+        console.log($scope.me)
 
         $scope.threads = $scope.data 
           |> each (->
@@ -38,7 +45,8 @@ module.exports = [
         |> filter (!= thread)
 
     $scope.do = ->
-      topchat-threads.set($scope.threads, $scope.max-friends)
+      topchat-threads.set-items($scope.threads, $scope.max-friends)
+      topchat-threads.set-me($scope.me)
       $location.path('/topchat/image')
 
     $scope.undo-remove = (thread) ->
