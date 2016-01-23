@@ -5,12 +5,14 @@ module.exports = [
   ($scope, $root-scope, $location, $http, $route, topchat-threads) ->
     $scope.message = null
     $scope.deleted-threads = []
-    $scope.max-friends = 15
+    $scope.max-friends = "15"
+    $scope.show = false
 
     if not $root-scope.route-data['/topchat']
       #$scope.message = 'Você precisa utilizar a extensão antes'
       $location.path("/")
     else
+      $scope.show = true
       $scope.data = $root-scope.route-data['/topchat']
       if $scope.data.length < 3
         $scope.data = null
@@ -45,6 +47,11 @@ module.exports = [
         |> filter (!= thread)
 
     $scope.do = ->
+      topchat-threads.set-items($scope.threads, $scope.max-friends)
+      topchat-threads.set-me($scope.me)
+      $location.path('/topchat/image')
+
+    $scope.do-old = ->
       topchat-threads.set-items($scope.threads, $scope.max-friends)
       topchat-threads.set-me($scope.me)
       $location.path('/topchat/image')

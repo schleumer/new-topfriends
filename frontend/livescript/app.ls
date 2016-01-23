@@ -28,6 +28,10 @@ app.config [\$routeProvider, ($route-provider) ->
     template-url: "/templates/topchat-image.html",
     controller: \TopchatImageController
   }
+  .when "/topchat/old-image", {
+    template-url: "/templates/topchat-old-image.html",
+    controller: \TopchatOldImageController
+  }
   .when "/", {
     template-url: "/templates/index.html",
     controller: \IndexController
@@ -104,6 +108,7 @@ app.run [
 app.controller \IndexController require "./controllers/index.ls"
 app.controller \AuthenticationController require "./controllers/authentication.ls"
 app.controller \TopchatImageController require "./controllers/topchat/image.ls"
+app.controller \TopchatOldImageController require "./controllers/topchat/old-image.ls"
 app.controller \TopchatController require "./controllers/topchat.ls"
 app.controller \PrivacyController require "./controllers/privacy.ls"
 

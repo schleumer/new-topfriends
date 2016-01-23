@@ -105,7 +105,10 @@ app.post "/do" (req, res) ->
 
 app.get '/get' (req, res) ->
   console.log 'session requested'
-  res.send req.session.{data, next}
+  set-timeout do
+    ->
+      res.send req.session.{data, next}
+    2000
 
 app.use (req,res) ->
   res.redirect '/index.html'
