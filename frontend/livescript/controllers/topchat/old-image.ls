@@ -47,7 +47,7 @@ module.exports = [
 
       console.log(new-threads)
       $http({
-        url:"http://localhost:3667/v1?me=#{me}&columnSize=2&maxFriends=10&showRanking=1&lang=#{lang}",
+        url:"http://api.topfriends.biz/v1?me=#{me}&columnSize=2&maxFriends=10&showRanking=1&lang=#{lang}",
         data: new-threads,
         method: 'POST',
         headers: {
