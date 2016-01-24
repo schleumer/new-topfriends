@@ -54,7 +54,7 @@ module.exports = [
     $scope.do-old = ->
       topchat-threads.set-items($scope.threads, $scope.max-friends)
       topchat-threads.set-me($scope.me)
-      $location.path('/topchat/image')
+      $location.path('/topchat/old-image')
 
     $scope.undo-remove = (thread) ->
       $scope.threads = $scope.threads ++ thread

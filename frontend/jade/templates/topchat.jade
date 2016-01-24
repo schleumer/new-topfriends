@@ -24,11 +24,11 @@ div(ng-if="fatalError")
     .clearfix
   div.topchat-topbar(style="margin-top:20px;margin-bottom:40px;text-align:center")
     button.q-button.q-button-primary.button-large(ng-click="do()")
-      i.fa.fa-bolt.spaced
-      | criar imagem
+      i.fa.fa-star.spaced
+      | criar top
     button.q-button.q-button-primary.button-large(ng-click="doOld()")
-      i.fa.fa-bolt.spaced
-      | criar imagem à moda antiga
+      i.fa.fa-star.spaced
+      | criar top à moda antiga
   div
     .q-u-lg-1-4.q-u-md-1-3.q-u-sm-1-2.user-box(ng-repeat="thread in threads | orderBy:'-message_count'", ng-click="remove(thread)")
       .container

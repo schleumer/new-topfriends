@@ -44,7 +44,7 @@ maxConcurrent = 3
 maxQueue = Infinity
 queue = new Queue(maxConcurrent, maxQueue)
 
-{ each, first, last } = require \prelude-ls
+{ each, first, last, sort-by, reverse } = require \prelude-ls
 
 session = require \express-session
 RedisStore = require(\connect-redis)(session)
@@ -55,21 +55,21 @@ s3.create-bucket Bucket: \schleumer-topfriends
 
 store = (buffer, me) ->
   (resolve, reject) <- new Promise!
-  let hash = crypto.create-hash \sha512
-    hash.update buffer
-    filename = (hash.digest \hex) + \.png
-    params =
-      Bucket: \schleumer-topfriends
-      Key: filename
-      Body: buffer
-      ACL: \public-read
-      ContentType: \image/png
+  rand!
+    .then (hash) ->
+      filename = hash + \.png
+      params =
+        Bucket: \schleumer-topfriends
+        Key: filename
+        Body: buffer
+        ACL: \public-read
+        ContentType: \image/png
 
-    console.log '[%s] storing object %s in bucket', me, filename
+      console.log '[%s] storing object %s in bucket', me, filename
 
-    s3.put-object params, (err, res) ->
-      console.log "[%s] object %s #{if err then 'was not ' else ''}stored in bucket", me, filename
-      resolve (s3.get-signed-url \putObject params.{Key, Bucket}) - /\?.*/
+      s3.put-object params, (err, res) ->
+        console.log "[%s] object %s #{if err then 'was not ' else ''}stored in bucket", me, filename
+        resolve (s3.get-signed-url \putObject params.{Key, Bucket}) - /\?.*/
 
 app = express!
 
@@ -80,7 +80,7 @@ Unit = (x) -> { run: x! }
 
 allow-cors = (req, res, next) ->
   [ <[ Access-Control-Allow-Origin * ]>
-    <[ Access-Control-Allow-Methods GET,PUT,POST,DELETE ]>
+    <[ Access-Control-Allow-Methods GET,PUT,POST,DELETE,OPTIONS ]>
     <[ Access-Control-Allow-Headers Content-Type ]> ]
   |> each (pair) ->
     # return res.header(first(pair)(last(pair)));
@@ -109,10 +109,9 @@ class Drawer
     catch ex
       console.log ex
 
-    delete @cache[file]
     rand!
       .then (x) ->
-        [x, path.join __dirname, '..', 'template-cache', 'test' + '.html']
+        [x, path.join __dirname, '..', 'template-cache', x + '.html']
       .then ([x, file-path]) ->
         fs.write-file-sync file-path, content
         [x, file-path]
@@ -155,7 +154,8 @@ class MonkeyPatchLang
     return util.format(str, number, singular, ...params) if number == 1
     return none if number < 1
 
-
+app.options "/v1" (req, res) ->
+  res.send("ok")
 app.post "/v1" (req, res) ->
   me = (req.query.me || "ouch").toString!
 
@@ -186,7 +186,9 @@ app.post "/v1" (req, res) ->
   friends = req.body
 
   if Array.is-array friends
+    friends = friends |> sort-by (.MessageCount) |> reverse
     friends = friends.slice 0, max-friends
+    console.log(friends)
   else
     console.log 'some **** happened'
     res.send 500

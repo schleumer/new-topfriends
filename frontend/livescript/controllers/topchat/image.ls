@@ -1,4 +1,4 @@
-{ reverse, take, sort-with } = require 'prelude-ls'
+{ reverse, take, sort-by } = require 'prelude-ls'
 
 
 module.exports = [
@@ -9,7 +9,7 @@ module.exports = [
     if not threads.items.length
       $location.path("/topchat")
 
-    $scope.threads = threads.items |> sort-with (.message_count) |> reverse
+    $scope.threads = threads.items |> sort-by (.message_count) |> reverse
     $scope.me = threads.me
 
     $scope.back = !-> $location.path('/topchat')
