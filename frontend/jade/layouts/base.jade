@@ -44,27 +44,27 @@ html(ng-app="TopFriends")
       if(!window.localStorage){
         document.write("Você está usando um navegador muito antigo")
       }
-    script.
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '1667664930119756',
-          xfbml      : true,
-          version    : 'v2.5'
-        });
-        if(window.__facebookInitiaded) {
-          window.__facebookInitiaded();
-        } else {
-          window.__facebookLoaded = true;
-        }
-      };
+    //script.
+    //  window.fbAsyncInit = function() {
+    //    FB.init({
+    //      appId      : '1667664930119756',
+    //      xfbml      : true,
+    //      version    : 'v2.5'
+    //    });
+    //    if(window.__facebookInitiaded) {
+    //      window.__facebookInitiaded();
+    //    } else {
+    //      window.__facebookLoaded = true;
+    //    }
+    //  };
 
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+    //  (function(d, s, id){
+    //     var js, fjs = d.getElementsByTagName(s)[0];
+    //     if (d.getElementById(id)) {return;}
+    //     js = d.createElement(s); js.id = id;
+    //     js.src = "//connect.facebook.net/en_US/sdk.js";
+    //     fjs.parentNode.insertBefore(js, fjs);
+    //  }(document, 'script', 'facebook-jssdk'));
     if !DEV
       script.
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

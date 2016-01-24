@@ -150,7 +150,7 @@ gulp.task 'prod', [
   #'closure-compiler',
   'stylesheet'
   #'stylesheet-uglify'
-  #'prod-templates'
+  'templates'
   'copy-fonts'
   'copy-icons'
   'copy-images'
