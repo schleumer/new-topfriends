@@ -1,0 +1,698 @@
+[
+  {
+    "MessageCount": 21876,
+    "OtherUser": {
+      "FbId": "100002688207227",
+      "Id": "fbid:100002688207227",
+      "ImageUrl": "http://graph.facebook.com/100002688207227/picture?width\u003d120",
+      "Name": "Natalia Tassoni",
+      "ShortName": "Natalia"
+    },
+    "OtherUserId": "100002688207227",
+    "Participants": [
+      {
+        "FbId": "100002688207227",
+        "Id": "fbid:100002688207227",
+        "ImageUrl": "http://graph.facebook.com/100002688207227/picture?width\u003d120",
+        "Name": "Natalia Tassoni",
+        "ShortName": "Natalia"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100002688207227",
+    "ThreadId": "mid.1396809450908:a9917b1d9892325e60"
+  },
+  {
+    "MessageCount": 4140,
+    "OtherUser": {
+      "FbId": "100001901780954",
+      "Id": "fbid:100001901780954",
+      "ImageUrl": "http://graph.facebook.com/100001901780954/picture?width\u003d120",
+      "Name": "Nicole L. Calderari",
+      "ShortName": "Nicole"
+    },
+    "OtherUserId": "100001901780954",
+    "Participants": [
+      {
+        "FbId": "100001901780954",
+        "Id": "fbid:100001901780954",
+        "ImageUrl": "http://graph.facebook.com/100001901780954/picture?width\u003d120",
+        "Name": "Nicole L. Calderari",
+        "ShortName": "Nicole"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100001901780954",
+    "ThreadId": "mid.1426194878882:e7e9057212803c0175"
+  },
+  {
+    "MessageCount": 2306,
+    "OtherUser": {
+      "FbId": "100001866137445",
+      "Id": "fbid:100001866137445",
+      "ImageUrl": "http://graph.facebook.com/100001866137445/picture?width\u003d120",
+      "Name": "Fernanda Selenko Duarte",
+      "ShortName": "Fernanda"
+    },
+    "OtherUserId": "100001866137445",
+    "Participants": [
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      },
+      {
+        "FbId": "100001866137445",
+        "Id": "fbid:100001866137445",
+        "ImageUrl": "http://graph.facebook.com/100001866137445/picture?width\u003d120",
+        "Name": "Fernanda Selenko Duarte",
+        "ShortName": "Fernanda"
+      }
+    ],
+    "ThreadFbId": "100001866137445",
+    "ThreadId": "mid.1415111196197:c3ff1c19f260aaa346"
+  },
+  {
+    "MessageCount": 1705,
+    "OtherUser": {
+      "FbId": "100009281154053",
+      "Id": "fbid:100009281154053",
+      "ImageUrl": "http://graph.facebook.com/100009281154053/picture?width\u003d120",
+      "Name": "Ju Gonçalves",
+      "ShortName": "Ju"
+    },
+    "OtherUserId": "100009281154053",
+    "Participants": [
+      {
+        "FbId": "100009281154053",
+        "Id": "fbid:100009281154053",
+        "ImageUrl": "http://graph.facebook.com/100009281154053/picture?width\u003d120",
+        "Name": "Ju Gonçalves",
+        "ShortName": "Ju"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100009281154053",
+    "ThreadId": "mid.1437402977095:1cb219388f3f336348"
+  },
+  {
+    "MessageCount": 1457,
+    "OtherUser": {
+      "FbId": "1240811524",
+      "Id": "fbid:1240811524",
+      "ImageUrl": "http://graph.facebook.com/1240811524/picture?width\u003d120",
+      "Name": "Jenny Souza",
+      "ShortName": "Jenny"
+    },
+    "OtherUserId": "1240811524",
+    "Participants": [
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      },
+      {
+        "FbId": "1240811524",
+        "Id": "fbid:1240811524",
+        "ImageUrl": "http://graph.facebook.com/1240811524/picture?width\u003d120",
+        "Name": "Jenny Souza",
+        "ShortName": "Jenny"
+      }
+    ],
+    "ThreadFbId": "1240811524",
+    "ThreadId": "mid.1445061746039:3fa64355fa3b85a282"
+  },
+  {
+    "MessageCount": 844,
+    "OtherUser": {
+      "FbId": "100010520227781",
+      "Id": "fbid:100010520227781",
+      "ImageUrl": "http://graph.facebook.com/100010520227781/picture?width\u003d120",
+      "Name": "Charlotte Oliveira",
+      "ShortName": "Charlotte"
+    },
+    "OtherUserId": "100010520227781",
+    "Participants": [
+      {
+        "FbId": "100010520227781",
+        "Id": "fbid:100010520227781",
+        "ImageUrl": "http://graph.facebook.com/100010520227781/picture?width\u003d120",
+        "Name": "Charlotte Oliveira",
+        "ShortName": "Charlotte"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100010520227781",
+    "ThreadId": "mid.1446354024090:e3e53b90eb007b5e86"
+  },
+  {
+    "MessageCount": 582,
+    "OtherUser": {
+      "FbId": "100005294043998",
+      "Id": "fbid:100005294043998",
+      "ImageUrl": "http://graph.facebook.com/100005294043998/picture?width\u003d120",
+      "Name": "Lucas Francesco",
+      "ShortName": "Lucas"
+    },
+    "OtherUserId": "100005294043998",
+    "Participants": [
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      },
+      {
+        "FbId": "100005294043998",
+        "Id": "fbid:100005294043998",
+        "ImageUrl": "http://graph.facebook.com/100005294043998/picture?width\u003d120",
+        "Name": "Lucas Francesco",
+        "ShortName": "Lucas"
+      }
+    ],
+    "ThreadFbId": "100005294043998",
+    "ThreadId": "mid.1427585177075:3d065249e6186e6880"
+  },
+  {
+    "MessageCount": 427,
+    "OtherUser": {
+      "FbId": "100001784487028",
+      "Id": "fbid:100001784487028",
+      "ImageUrl": "http://graph.facebook.com/100001784487028/picture?width\u003d120",
+      "Name": "Trevor Scopenhauer",
+      "ShortName": "Trevor"
+    },
+    "OtherUserId": "100001784487028",
+    "Participants": [
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      },
+      {
+        "FbId": "100001784487028",
+        "Id": "fbid:100001784487028",
+        "ImageUrl": "http://graph.facebook.com/100001784487028/picture?width\u003d120",
+        "Name": "Trevor Scopenhauer",
+        "ShortName": "Trevor"
+      }
+    ],
+    "ThreadFbId": "100001784487028",
+    "ThreadId": "mid.1421328836826:9322c96083b3605d47"
+  },
+  {
+    "MessageCount": 240,
+    "OtherUser": {
+      "FbId": "100006070125532",
+      "Id": "fbid:100006070125532",
+      "ImageUrl": "http://graph.facebook.com/100006070125532/picture?width\u003d120",
+      "Name": "Nathaly Mazarak",
+      "ShortName": "Nathaly"
+    },
+    "OtherUserId": "100006070125532",
+    "Participants": [
+      {
+        "FbId": "100006070125532",
+        "Id": "fbid:100006070125532",
+        "ImageUrl": "http://graph.facebook.com/100006070125532/picture?width\u003d120",
+        "Name": "Nathaly Mazarak",
+        "ShortName": "Nathaly"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100006070125532",
+    "ThreadId": "mid.1419095894486:693d4ac9c9dd2a3618"
+  },
+  {
+    "MessageCount": 132,
+    "OtherUser": {
+      "FbId": "100000692316314",
+      "Id": "fbid:100000692316314",
+      "ImageUrl": "http://graph.facebook.com/100000692316314/picture?width\u003d120",
+      "Name": "Pedro Rigo",
+      "ShortName": "Pedro"
+    },
+    "OtherUserId": "100000692316314",
+    "Participants": [
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      },
+      {
+        "FbId": "100000692316314",
+        "Id": "fbid:100000692316314",
+        "ImageUrl": "http://graph.facebook.com/100000692316314/picture?width\u003d120",
+        "Name": "Pedro Rigo",
+        "ShortName": "Pedro"
+      }
+    ],
+    "ThreadFbId": "100000692316314",
+    "ThreadId": "mid.1422839893354:727034f5ffd4c4f756"
+  },
+  {
+    "MessageCount": 121,
+    "OtherUser": {
+      "FbId": "100002105906362",
+      "Id": "fbid:100002105906362",
+      "ImageUrl": "http://graph.facebook.com/100002105906362/picture?width\u003d120",
+      "Name": "Pedro Nixolau",
+      "ShortName": "Pedro"
+    },
+    "OtherUserId": "100002105906362",
+    "Participants": [
+      {
+        "FbId": "100002105906362",
+        "Id": "fbid:100002105906362",
+        "ImageUrl": "http://graph.facebook.com/100002105906362/picture?width\u003d120",
+        "Name": "Pedro Nixolau",
+        "ShortName": "Pedro"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100002105906362",
+    "ThreadId": "mid.1419217697370:df18aee93a508ad471"
+  },
+  {
+    "MessageCount": 99,
+    "OtherUser": {
+      "FbId": "100002630742922",
+      "Id": "fbid:100002630742922",
+      "ImageUrl": "http://graph.facebook.com/100002630742922/picture?width\u003d120",
+      "Name": "Gabriel Pedro",
+      "ShortName": "Gabriel"
+    },
+    "OtherUserId": "100002630742922",
+    "Participants": [
+      {
+        "FbId": "100002630742922",
+        "Id": "fbid:100002630742922",
+        "ImageUrl": "http://graph.facebook.com/100002630742922/picture?width\u003d120",
+        "Name": "Gabriel Pedro",
+        "ShortName": "Gabriel"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100002630742922",
+    "ThreadId": "mid.1403191849170:197972dae3c1f1dd81"
+  },
+  {
+    "MessageCount": 84,
+    "OtherUser": {
+      "FbId": "1014077734",
+      "Id": "fbid:1014077734",
+      "ImageUrl": "http://graph.facebook.com/1014077734/picture?width\u003d120",
+      "Name": "Pedro Paulo Amorim",
+      "ShortName": "Pedro Paulo"
+    },
+    "OtherUserId": "1014077734",
+    "Participants": [
+      {
+        "FbId": "1014077734",
+        "Id": "fbid:1014077734",
+        "ImageUrl": "http://graph.facebook.com/1014077734/picture?width\u003d120",
+        "Name": "Pedro Paulo Amorim",
+        "ShortName": "Pedro Paulo"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "1014077734",
+    "ThreadId": "mid.1427553627506:a86df0fe5867266164"
+  },
+  {
+    "MessageCount": 71,
+    "OtherUser": {
+      "FbId": "100001770471233",
+      "Id": "fbid:100001770471233",
+      "ImageUrl": "http://graph.facebook.com/100001770471233/picture?width\u003d120",
+      "Name": "Rafael Bernardo",
+      "ShortName": "Rafael"
+    },
+    "OtherUserId": "100001770471233",
+    "Participants": [
+      {
+        "FbId": "100001770471233",
+        "Id": "fbid:100001770471233",
+        "ImageUrl": "http://graph.facebook.com/100001770471233/picture?width\u003d120",
+        "Name": "Rafael Bernardo",
+        "ShortName": "Rafael"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100001770471233",
+    "ThreadId": "mid.1402425249636:839692482b26693720"
+  },
+  {
+    "MessageCount": 54,
+    "OtherUser": {
+      "FbId": "100002575044031",
+      "Id": "fbid:100002575044031",
+      "ImageUrl": "http://graph.facebook.com/100002575044031/picture?width\u003d120",
+      "Name": "Cosmo Abdon",
+      "ShortName": "Cosmo"
+    },
+    "OtherUserId": "100002575044031",
+    "Participants": [
+      {
+        "FbId": "100002575044031",
+        "Id": "fbid:100002575044031",
+        "ImageUrl": "http://graph.facebook.com/100002575044031/picture?width\u003d120",
+        "Name": "Cosmo Abdon",
+        "ShortName": "Cosmo"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100002575044031",
+    "ThreadId": "mid.1404130909633:f97afa694b304ade92"
+  },
+  {
+    "MessageCount": 46,
+    "OtherUser": {
+      "FbId": "100001008425105",
+      "Id": "fbid:100001008425105",
+      "ImageUrl": "http://graph.facebook.com/100001008425105/picture?width\u003d120",
+      "Name": "Vitor Santana",
+      "ShortName": "Vitor"
+    },
+    "OtherUserId": "100001008425105",
+    "Participants": [
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      },
+      {
+        "FbId": "100001008425105",
+        "Id": "fbid:100001008425105",
+        "ImageUrl": "http://graph.facebook.com/100001008425105/picture?width\u003d120",
+        "Name": "Vitor Santana",
+        "ShortName": "Vitor"
+      }
+    ],
+    "ThreadFbId": "100001008425105",
+    "ThreadId": "mid.1452889340776:46453b8d0de7524e30"
+  },
+  {
+    "MessageCount": 18,
+    "OtherUser": {
+      "FbId": "100000794959253",
+      "Id": "fbid:100000794959253",
+      "ImageUrl": "http://graph.facebook.com/100000794959253/picture?width\u003d120",
+      "Name": "Andrew Schleumer",
+      "ShortName": "Andrew"
+    },
+    "OtherUserId": "100000794959253",
+    "Participants": [
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      },
+      {
+        "FbId": "100000794959253",
+        "Id": "fbid:100000794959253",
+        "ImageUrl": "http://graph.facebook.com/100000794959253/picture?width\u003d120",
+        "Name": "Andrew Schleumer",
+        "ShortName": "Andrew"
+      }
+    ],
+    "ThreadFbId": "100000794959253",
+    "ThreadId": "id.332197063549513"
+  },
+  {
+    "MessageCount": 17,
+    "OtherUser": {
+      "FbId": "100001137885595",
+      "Id": "fbid:100001137885595",
+      "ImageUrl": "http://graph.facebook.com/100001137885595/picture?width\u003d120",
+      "Name": "Clara Damásio",
+      "ShortName": "Clara"
+    },
+    "OtherUserId": "100001137885595",
+    "Participants": [
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      },
+      {
+        "FbId": "100001137885595",
+        "Id": "fbid:100001137885595",
+        "ImageUrl": "http://graph.facebook.com/100001137885595/picture?width\u003d120",
+        "Name": "Clara Damásio",
+        "ShortName": "Clara"
+      }
+    ],
+    "ThreadFbId": "100001137885595",
+    "ThreadId": "mid.1443633890918:6a63f7ddcfaea20238"
+  },
+  {
+    "MessageCount": 16,
+    "OtherUser": {
+      "FbId": "100007707914138",
+      "Id": "fbid:100007707914138",
+      "ImageUrl": "http://graph.facebook.com/100007707914138/picture?width\u003d120",
+      "Name": "Beatriz Rocha",
+      "ShortName": "Beatriz"
+    },
+    "OtherUserId": "100007707914138",
+    "Participants": [
+      {
+        "FbId": "100007707914138",
+        "Id": "fbid:100007707914138",
+        "ImageUrl": "http://graph.facebook.com/100007707914138/picture?width\u003d120",
+        "Name": "Beatriz Rocha",
+        "ShortName": "Beatriz"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100007707914138",
+    "ThreadId": "mid.1405788432735:b90cffb97679cad458"
+  },
+  {
+    "MessageCount": 14,
+    "OtherUser": {
+      "FbId": "100003989248435",
+      "Id": "fbid:100003989248435",
+      "ImageUrl": "http://graph.facebook.com/100003989248435/picture?width\u003d120",
+      "Name": "Murilo Ribeiro Melo",
+      "ShortName": "Murilo"
+    },
+    "OtherUserId": "100003989248435",
+    "Participants": [
+      {
+        "FbId": "100003989248435",
+        "Id": "fbid:100003989248435",
+        "ImageUrl": "http://graph.facebook.com/100003989248435/picture?width\u003d120",
+        "Name": "Murilo Ribeiro Melo",
+        "ShortName": "Murilo"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100003989248435",
+    "ThreadId": "mid.1371754170888:71513e23370ccf4911"
+  },
+  {
+    "MessageCount": 13,
+    "OtherUser": {
+      "FbId": "100004532680464",
+      "Id": "fbid:100004532680464",
+      "ImageUrl": "http://graph.facebook.com/100004532680464/picture?width\u003d120",
+      "Name": "Renan Zapelini",
+      "ShortName": "Renan"
+    },
+    "OtherUserId": "100004532680464",
+    "Participants": [
+      {
+        "FbId": "100004532680464",
+        "Id": "fbid:100004532680464",
+        "ImageUrl": "http://graph.facebook.com/100004532680464/picture?width\u003d120",
+        "Name": "Renan Zapelini",
+        "ShortName": "Renan"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100004532680464",
+    "ThreadId": "mid.1421452542543:9fef17a029888dbd51"
+  },
+  {
+    "MessageCount": 7,
+    "OtherUser": {
+      "FbId": "100007658591059",
+      "Id": "fbid:100007658591059",
+      "ImageUrl": "http://graph.facebook.com/100007658591059/picture?width\u003d120",
+      "Name": "Fabrício Werneck",
+      "ShortName": "Fabrício"
+    },
+    "OtherUserId": "100007658591059",
+    "Participants": [
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      },
+      {
+        "FbId": "100007658591059",
+        "Id": "fbid:100007658591059",
+        "ImageUrl": "http://graph.facebook.com/100007658591059/picture?width\u003d120",
+        "Name": "Fabrício Werneck",
+        "ShortName": "Fabrício"
+      }
+    ],
+    "ThreadFbId": "100007658591059",
+    "ThreadId": "mid.1432647454610:1706e8d26d5e2e3107"
+  },
+  {
+    "MessageCount": 5,
+    "OtherUser": {
+      "FbId": "100003930434038",
+      "Id": "fbid:100003930434038",
+      "ImageUrl": "http://graph.facebook.com/100003930434038/picture?width\u003d120",
+      "Name": "Chico Das Capas",
+      "ShortName": "Chico"
+    },
+    "OtherUserId": "100003930434038",
+    "Participants": [
+      {
+        "FbId": "100003930434038",
+        "Id": "fbid:100003930434038",
+        "ImageUrl": "http://graph.facebook.com/100003930434038/picture?width\u003d120",
+        "Name": "Chico Das Capas",
+        "ShortName": "Chico"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100003930434038",
+    "ThreadId": "mid.1389855603517:9e4eecc90a902eed91"
+  },
+  {
+    "MessageCount": 4,
+    "OtherUser": {
+      "FbId": "100000540155014",
+      "Id": "fbid:100000540155014",
+      "ImageUrl": "http://graph.facebook.com/100000540155014/picture?width\u003d120",
+      "Name": "Victor Schleumer",
+      "ShortName": "Victor"
+    },
+    "OtherUserId": "100000540155014",
+    "Participants": [
+      {
+        "FbId": "100000540155014",
+        "Id": "fbid:100000540155014",
+        "ImageUrl": "http://graph.facebook.com/100000540155014/picture?width\u003d120",
+        "Name": "Victor Schleumer",
+        "ShortName": "Victor"
+      },
+      {
+        "FbId": "100004029261213",
+        "Id": "fbid:100004029261213",
+        "ImageUrl": "http://graph.facebook.com/100004029261213/picture?width\u003d120",
+        "Name": "Wesley Schleumer de Góes",
+        "ShortName": "Wesley"
+      }
+    ],
+    "ThreadFbId": "100000540155014",
+    "ThreadId": "id.102404643242599"
+  }
+]

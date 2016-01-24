@@ -1,0 +1,14 @@
+h1.text-center(ng-if="status === 0") Carregando...
+
+h1.text-center(ng-if="status === 1") Enviando dados...
+
+div.text-center(ng-if="status === 2", style="margin-top: 10px")
+  a.q-button.q-button-primary.button-large(ng-href="{{image}}", target="_blank")
+    i.fa.fa-eye.spaced
+    | visualizar / salvar
+  br
+  img(ng-src="{{image}}", style="margin-top: 10px")
+  br
+  a.q-button.q-button-primary.button-large(ng-href="{{image}}", target="_blank")
+    i.fa.fa-eye.spaced
+    | visualizar / salvar
