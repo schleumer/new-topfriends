@@ -188,7 +188,6 @@ app.post "/v1" (req, res) ->
   if Array.is-array friends
     friends = friends |> sort-by (.MessageCount) |> reverse
     friends = friends.slice 0, max-friends
-    console.log(friends)
   else
     console.log 'some **** happened'
     res.send 500
