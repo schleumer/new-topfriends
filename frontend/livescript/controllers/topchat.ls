@@ -20,6 +20,7 @@ module.exports = [
       else
         other-users = (
           $scope.data
+          |> filter (y) -> y.participants.length > 1 # caso a thread esteja abandonada o facebook mantem só usuário principal, sendo assim, não da pra identificar quem é o outro usuário
           |> map (x) -> "fbid:#{x.other_user_fbid}"
         )
         
