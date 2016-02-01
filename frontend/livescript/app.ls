@@ -149,6 +149,6 @@ logger = new Logger
 
 app.factory '$exceptionHandler' ->
   (exception, cause) ->
-    exception.message += ' (caused by "' + cause + '")'
+    exception.message += ' (caused by "' + cause + '") @ ' + window.__version
     logger.log(exception.message)
     throw exception
