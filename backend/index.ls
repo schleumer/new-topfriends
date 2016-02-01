@@ -23,6 +23,14 @@ frontend = new (winston.Logger)({
   ]
 });
 
+
+sessions = new (winston.Logger)({
+  transports: [
+    new (winston.transports.Console)(),
+    new (winston.transports.File)({ filename: path.join(__dirname, '..', 'sessions.log')})
+  ]
+});
+
 store = (buffer, callback) ->
   let hash = crypto.create-hash \sha512
     hash.update buffer
@@ -100,13 +108,18 @@ app.post "/base64-proxy" (req, res) ->
 
 app.post "/do" (req, res) ->
   console.log 'session pushed'
+  data = null
+  
   try
-    data = req.body.data |> JSON.parse
+    data := req.body.data |> JSON.parse
   catch ex
-    data = []
+    data := []
     console.log ex, req.body.data
+
+  sessions.info { data }
+
   req.session <<< {
-    data: data
+    data
     next: '/topchat'
   }
   res.redirect '/'
