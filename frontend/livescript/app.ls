@@ -114,3 +114,41 @@ app.controller \PrivacyController require "./controllers/privacy.ls"
 
 app.directive \topchat require "./directives/topchat.ls"
 app.directive \adsense require "./directives/adsense.ls"
+
+class Logger
+  data: []
+  interval: null
+  dispatch: ->
+    http = new XMLHttpRequest();
+    http.open "POST" "http://topfriends.biz/log"
+    http.set-request-header "Content-Type" "application/json;charset=UTF-8"
+
+    #xmlhttp.onreadystatechange = function() {
+    #    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+    #        if(xmlhttp.status == 200){
+    #            console.log('Response: ' + xmlhttp.responseText );
+    #        }else{
+    #            console.log('Error: ' + xmlhttp.statusText )
+    #        }
+    #    }
+    #}
+    http.send(JSON.stringify(@data));
+    @data = []
+
+  prepare: ->
+    clear-interval @interval if @interval
+    @interval = set-timeout do
+      ~> @dispatch!
+      500
+  
+  log: (message) ->
+    @data.push(message)
+    @prepare!
+
+logger = new Logger
+
+app.factory '$exceptionHandler' ->
+  (exception, cause) ->
+    exception.message += ' (caused by "' + cause + '")'
+    logger.log(exception.message)
+    throw exception

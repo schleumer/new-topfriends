@@ -5,6 +5,7 @@ require! \multer
 require! \request
 require! \fs
 require! \crypto
+require! \winston
 
 { each, first, last } = require \prelude-ls
 
@@ -14,6 +15,13 @@ AWS = require \aws-sdk
 
 s3 = new AWS.S3 compute-checksums: true
 s3.create-bucket Bucket: \schleumer-topfriends
+
+frontend = new (winston.Logger)({
+  transports: [
+    new (winston.transports.Console)(),
+    new (winston.transports.File)({ filename: path.join(__dirname, '..', 'frontend.log')})
+  ]
+});
 
 store = (buffer, callback) ->
   let hash = crypto.create-hash \sha512
@@ -109,6 +117,10 @@ app.get '/get' (req, res) ->
     ->
       res.send req.session.{data, next}
     2000
+
+app.post '/log' (req, res) ->
+  frontend.error { data: req.body }
+  res.send('ok')
 
 app.use (req,res) ->
   res.redirect '/index.html'
