@@ -3,7 +3,7 @@
 module.exports = ['$location', '$route', '$rootScope', '$http', '$timeout'
 ($location, $route, $root-scope, $http, $timeout) ->
   return {
-    template-url: '/templates/directives/adsense.html'
+    template-url: '/templates/directives/omg.html'
     restrict: 'E'
     scope: {
       client: '@',
